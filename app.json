@@ -1,0 +1,20 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/publish/publish",
+    "pages/rent/rent",
+    "pages/home/home",
+    "pages/me/me",
+    "pages/notification/notification",
+    "pages/publish/orderInfor/Add",
+    "pages/me/information/information",
+    "pages/me/order/order",
+    "pages/me/purse/purse"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F49B60",
+    "navigationBarTitleText": "小猪配停",
+    "navigationBarTextStyle": "black"
+  }
+}

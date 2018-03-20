@@ -1,0 +1,28 @@
+.pic {
+  width: 788rpx;
+  height: 228rpx;
+  margin: 20rpx;
+  border-radius: 10rpx;
+}
+.spic {
+  width: 68rpx;
+  height: 68rpx;
+  margin: 5rpx;
+  border-radius: 50%;
+}
+.top{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+}
+.Add{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rpx 0;
+  box-sizing: border-box;
+}

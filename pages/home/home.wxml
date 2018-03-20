@@ -1,0 +1,24 @@
+<!--index.wxml-->
+<view class="top">
+
+  <view class="rig">
+  <image bindtap="note" class="spic" src="../images/note.jpg" background-size="cover"></image>
+  </view>
+
+  <view class="lef">
+    <image bindtap="me" class="spic" src="../images/me.jpg" background-size="cover"></image>
+  </view>
+
+</view>
+
+<view class="container">
+
+  <view class="tingche">
+      <image bindtap="bindViewTap2" class="pic" src="../images/tc.jpg" background-size="cover"></image>
+  </view>
+
+  <view class="chuzu">
+    <image bindtap="bindViewTap1" class="pic" src="../images/cz.jpg" background-size="cover"></image> 
+  </view>    
+
+</view>

@@ -1,0 +1,56 @@
+ <view id='information'>
+  <view class="top"> 
+    <view class="userinfo">
+      <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <block wx:else>
+        <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      </block>
+    </view>
+  </view>
+
+  <form bindsubmit='formSubmit' bindreset='formReset'>
+
+    <view class="section">  
+      <view class="section__title">园区卡号</view>  
+      <view class='form-group'>  
+        <input type="text" class="input-text" name="areaN" name='Pid' placeholder="数字" />  
+      </view>
+    </view>  
+
+    <view class="section">    
+      <view class="section__title">车牌号</view>  
+      <view class='form-group'>  
+        <input type="number" class="input-text" name="buildN" placeholder="川A30525" />  
+      </view>  
+    </view>  
+
+    <view class="section"> 
+      <view class="section__title">车位</view>  
+      <view class='form-group'>  
+        <input type="text" class="input-text" name="carportN" placeholder="区域-楼号-车位号" />  
+      </view>   
+    </view>  
+    
+    <view class="btn-area">  
+      <button formType="submit" class="sub">提交</button> 
+      <button formType="reset" class="res">取消</button> 
+    </view> 
+
+  </form>
+
+ <!-- 黑框提示并消失 -->  
+    <toast hidden="{{toast1Hidden}}" bindchange="toast1Change">  
+        {{notice_str}}  
+    </toast>  
+    <!-- 确认框 及 提示框 -->  
+    <view class="page__bd">  
+        <modal title="确认" confirm-text="确定" cancel-text="取消" hidden="{{modalHidden}}" mask bindconfirm="confirm_one" bindcancel="cancel_one">  
+            确认提交么？  
+        </modal>  
+        <modal class="modal" hidden="{{modalHidden2}}" no-cancel bindconfirm="modalChange2" bindcancel="modalChange2">  
+            <view> 提示 </view>  
+            <view> 清空成功 </view>  
+        </modal>  
+    </view>  
+</view>

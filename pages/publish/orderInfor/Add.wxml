@@ -1,0 +1,48 @@
+<view class="top">
+
+  <view class="rig">
+  <image bindtap="note" class="spic" src="../../images/note.jpg" background-size="cover"></image>
+  </view>
+<view class="addtext">发布新订单</view>
+  <view class="lef">
+    <image bindtap="me" class="spic" src="../../images/me.jpg" background-size="cover"></image>
+  </view>
+
+</view>
+<form class="addForm">
+  <view class="section">  
+    <view class="section__title">区域</view>  
+    <view class='form-group'>  
+      <input type="text" class="input-text" name="areaN" placeholder="A/B/C/D/E" />  
+    </view>      
+    <view class="section__title">楼号</view>  
+    <view class='form-group'>  
+      <input type="number" class="input-text" name="buildN" placeholder="number" />  
+    </view>     
+    <view class="section__title">车位号</view>  
+    <view class='form-group'>  
+      <input type="number" class="input-text" name="carportN" placeholder="number" />  
+    </view>   
+    <view class="section__title">租出时间段</view>  
+    <view class="picker">
+      <picker mode="date" value="{{dateValue}}" start="2018-03-01" end="2018-12-31" bindchange="datePickerBindchange" class="date">
+    	{{dateValue}}
+      </picker>
+    </view>
+    <view class="section__title">租出费用</view> 
+  </view>  
+
+  <view class="section section_gap">  
+    <view class="section__title">
+      <text>免费</text>
+      <switch name="charge"/> 
+    </view>  
+    <view class='form-group'>  
+      <input type="number" class="input-text" name="carportN" placeholder="5  元/天" />
+    </view>  
+  </view>  
+  <view class="btn-area">  
+    <button formType="submit" class="sub">提交</button> 
+    <button formType="reset" class="res">取消</button> 
+  </view> 
+</form>

@@ -1,0 +1,40 @@
+/* pages/me/me.wxss */
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F49B60;
+  padding-bottom: 10rpx;
+}
+
+.userinfo-avatar {
+  width: 138rpx;
+  height: 138rpx;
+  margin: 10rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: black;
+}
+
+.information{
+  padding:20rpx;
+  background-color: white;
+}
+.purse{
+  padding:20rpx;
+}
+.order{
+  padding:20rpx;
+  background-color: white;
+}
+.sspic{
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+  justify-content: center;  
+}
+.stext{
+  padding:20rpx; 
+}

@@ -1,0 +1,26 @@
+<!--me.wxml-->
+<view class="top"> 
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+
+  <view class="information">
+    <image class="sspic" src="../images/information.jpg"></image>
+    <text class="stext"  bindtap="infor">\t我的资料</text>
+  </view>
+
+  <view class="purse">
+    <image class="sspic" src="../images/information.jpg"></image>
+    <text class="stext" bindtap="pur">\t我的钱包</text>
+  </view>
+
+  <view class="order">
+    <image class="sspic" src="../images/information.jpg"></image>
+    <text class="stext" bindtap="ord">\t我的订单</text>
+  </view>
+</view>  
+

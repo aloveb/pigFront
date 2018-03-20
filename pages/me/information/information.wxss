@@ -1,0 +1,56 @@
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F49B60;
+  padding-bottom: 10rpx;
+}
+
+.userinfo-avatar {
+  width: 138rpx;
+  height: 138rpx;
+  margin: 10rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: black;
+}
+
+.section__title{  
+    float: left;  
+    width:30%;
+    margin: 15rpx 0rpx 15rpx 15rpx;  
+}  
+.form-group{  
+    float: right;  
+    width: 60%; 
+    margin: 15rpx 15rpx 15rpx 0rpx;
+}  
+.sub{   
+    float: left; 
+    width: 40%; 
+    height: 100rpx;
+    margin: 15rpx;
+    color: black;
+    background-color: #0792B5;
+    border-radius: 40%;
+} 
+.res{   
+    float: right; 
+    width: 40%; 
+    height: 100rpx;
+    margin: 15rpx;
+    color: black;
+    background-color: #0792B5;
+    border-radius: 40%;
+} 
+.section{  
+    clear: both;  
+    width:90%;  
+    margin: 2rem auto;  
+}  
+.input-text{  
+    border: 1px solid #ddd;  
+}  
+
