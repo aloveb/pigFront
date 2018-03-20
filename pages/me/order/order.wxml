@@ -1,2 +1,10 @@
-<text>我的订单页面\n</text>
-<text>租出/租入、时间、金额、状态</text>
+<view class="top">
+  <view class="rig">
+  <image bindtap="note" class="spic" src="../../images/note.jpg" background-size="cover"></image>
+  </view>
+<view class="addtext">我的订单</view>
+  <view class="lef">
+    <image bindtap="me" class="spic" src="../../images/me.jpg" background-size="cover"></image>
+  </view>
+</view>
+<view class='container'>loading…</view>

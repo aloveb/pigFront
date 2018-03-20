@@ -1,2 +1,12 @@
 <!--pages/tingche/tingche.wxml-->
-<text>已发布的车位信息页面 \n选中订单后弹出小框</text>
+<view class="top">
+  <view class="rig">
+  <image bindtap="note" class="spic" src="../images/note.jpg" background-size="cover"></image>
+  </view>
+<view class="addtext">抢车位</view>
+  <view class="lef">
+    <image bindtap="me" class="spic" src="../images/me.jpg" background-size="cover"></image>
+  </view>
+</view>
+
+<view class='container'>loading…</view>

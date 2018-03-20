@@ -1,2 +1,18 @@
-<text>我的钱包\n</text>
-<text>卡卷、余额</text>
+<view class="top">
+  <view class="rig">
+  <image bindtap="note" class="spic" src="../../images/note.jpg" background-size="cover"></image>
+  </view>
+<view class="addtext">我的钱包</view>
+  <view class="lef">
+    <image bindtap="me" class="spic" src="../../images/me.jpg" background-size="cover"></image>
+  </view>
+</view>
+
+<view class="pigS">
+    <image bindtap="note" class="pic" src="../../images/PigMoney.jpg" background-size="cover"></image>
+</view>
+
+<view class="PigText">
+    <text>您现拥有的猪猪币是: {{pigmoney}}个</text>
+</view> 
+

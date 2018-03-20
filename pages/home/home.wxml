@@ -13,11 +13,11 @@
 
 <view class="container">
 
-  <view class="tingche">
+  <view class="rent">
       <image bindtap="bindViewTap2" class="pic" src="../images/tc.jpg" background-size="cover"></image>
   </view>
 
-  <view class="chuzu">
+  <view class="publish">
     <image bindtap="bindViewTap1" class="pic" src="../images/cz.jpg" background-size="cover"></image> 
   </view>    
 

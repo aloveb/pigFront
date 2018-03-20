@@ -5,24 +5,7 @@
   margin: 20rpx;
   border-radius: 50%;
 }
-.spic {
-  width: 68rpx;
-  height: 68rpx;
-  margin: 5rpx;
-  border-radius: 50%;
-}
-.mypic {
-  width: 88rpx;
-  height: 88rpx;
-  margin: 5rpx;
-  border-radius: 50%;
-}
-.mynotipic {
-  width: 88rpx;
-  height: 88rpx;
-  margin: 5rpx;
-  border-radius: 5rpx;
-}
+
 .text {
   color: #aaa;
 }
@@ -30,10 +13,4 @@
 .usermotto {
   margin-top: 200px;
 }
-.top{
-  display:flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20rpx;
-}
+
