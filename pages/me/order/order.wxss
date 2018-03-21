@@ -1,0 +1,38 @@
+.order{
+  height: 100%;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20rpx 40rpx 40rpx 40rpx;
+  box-sizing: border-box;
+  background-color: #F7F6F6;
+  color: #7F6F6F;
+}
+.orderInfor{
+  width: 80%;
+}
+
+.button1{
+  background-color: #F7F6F6;
+}
+
+button::after{
+  border: none;
+}
+.orderText{
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin: 10rpx;
+  font-size: 30rpx;
+  font-weight: 400;
+}
+
+.picRent {
+  width: 100rpx;
+  height: 100rpx;
+  margin: 40rpxx;
+  border-radius: 10rpx;
+}

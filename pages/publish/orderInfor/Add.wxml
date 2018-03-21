@@ -1,36 +1,50 @@
-<view class="top">
+<view id="Add">
 
-  <view class="rig">
-  <image bindtap="note" class="spic" src="../../images/note.jpg" background-size="cover"></image>
-  </view>
-<view class="addtext">发布新订单</view>
-  <view class="lef">
-    <image bindtap="me" class="spic" src="../../images/me.jpg" background-size="cover"></image>
+  <view class="top">
+    <view class="rig">
+    <image bindtap="note" class="spic" src="../../images/note.jpg" background-size="cover"></image>
+    </view>
+  <view class="addtext">发布新订单</view>
+    <view class="lef">
+      <image bindtap="me" class="spic" src="../../images/me.jpg" background-size="cover"></image>
+    </view>
   </view>
 
-</view>
-<form class="addForm">
+<form bindsubmit='formSubmit' bindreset='formReset'>
+
   <view class="section">  
     <view class="section__title">区域</view>  
     <view class='form-group'>  
-      <input type="text" class="input-text" name="areaN" placeholder="A/B/C/D/E" />  
-    </view>      
+      <input type="text" class="input-text" name="parkArea" placeholder="A/B/C/D/E" />  
+    </view>    
+  </view>  
+
+  <view class="section">   
     <view class="section__title">楼号</view>  
     <view class='form-group'>  
-      <input type="number" class="input-text" name="buildN" placeholder="number" />  
-    </view>     
+      <input type="number" class="input-text" name="parkBuild" placeholder="number" />  
+    </view> 
+  </view>   
+
+  <view class="section">    
     <view class="section__title">车位号</view>  
     <view class='form-group'>  
-      <input type="number" class="input-text" name="carportN" placeholder="number" />  
-    </view>   
+      <input type="number" class="input-text" name="parkNum" placeholder="number" />  
+    </view> 
+  </view>  
+
+  <view class="section"> 
     <view class="section__title">租出时间段</view>  
     <view class="picker">
-      <picker mode="date" value="{{dateValue}}" start="2018-03-01" end="2018-12-31" bindchange="datePickerBindchange" class="date">
+      <picker mode="date" value="{{dateValue}}" start="2018-03-01" end="2018-12-31" bindchange="datePickerBindchange" class="date" name="orderDate">
     	{{dateValue}}
       </picker>
     </view>
+  </view>
+
+  <view class="section"> 
     <view class="section__title">租出费用</view> 
-  </view>  
+  </view>
 
   <view class="section section_gap">  
     <view class="section__title">
@@ -38,11 +52,28 @@
       <switch name="charge"/> 
     </view>  
     <view class='form-group'>  
-      <input type="number" class="input-text" name="carportN" placeholder="5  元/天" />
+      <input type="number" class="input-text" name="price" placeholder="5  元/天" />
     </view>  
   </view>  
+
   <view class="btn-area">  
     <button formType="submit" class="sub">提交</button> 
     <button formType="reset" class="res">取消</button> 
   </view> 
 </form>
+
+ <!-- 黑框提示并消失 -->  
+    <toast hidden="{{toast1Hidden}}" bindchange="toast1Change">  
+        {{notice_str}}  
+    </toast>  
+    <!-- 确认框 及 提示框 -->  
+    <view class="page__bd">  
+        <modal title="确认" confirm-text="确定" cancel-text="取消" hidden="{{modalHidden}}" mask bindconfirm="confirm_one" bindcancel="cancel_one">  
+            确认提交么？  
+        </modal>  
+        <modal class="modal" hidden="{{modalHidden2}}" no-cancel bindconfirm="modalChange2" bindcancel="modalChange2">  
+            <view> 提示 </view>  
+            <view> 清空成功 </view>  
+        </modal>  
+    </view>  
+</view>

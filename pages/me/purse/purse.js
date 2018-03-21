@@ -5,14 +5,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-    pigmoney:150
+    purse:150
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    wx.request({
+      url: 'https://',
+      method: 'GET',
+      success: function (res) {
+        that.setData({
+          purse: res.data.result[0].purse
+        })
+      }
+    })
   },
 
   /**

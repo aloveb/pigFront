@@ -83,21 +83,19 @@ Page({
     })
   },
   formSubmit: function(e){
+    console.log(e.detail.value);
     var that=this;
     var formData=e.detail.value;
     wx.request({
       url: 'https://',
-      data: formData,
+      data: formData, 
+      method:'POST',
       header:{
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       success:function(res){
         console.log(res.data);
         that.modalTap();
-        if (res == null || res.data == null) {
-          console.error('网络请求失败');
-          return;
-        } 
       }
     })
   },

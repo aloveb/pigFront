@@ -1,4 +1,4 @@
- <view id='information'>
+<view id='information'>
   <view class="top-me"> 
     <view class="userinfo">
       <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
@@ -14,21 +14,23 @@
     <view class="section">  
       <view class="section__title">园区卡号</view>  
       <view class='form-group'>  
-        <input type="text" class="input-text" name="areaN" name='Pid' placeholder="数字" />  
+        <input type="text" class="input-text" name='carID' placeholder="数字" />  
       </view>
     </view>  
 
     <view class="section">    
       <view class="section__title">车牌号</view>  
       <view class='form-group'>  
-        <input type="number" class="input-text" name="buildN" placeholder="川A30525" />  
+        <input type="number" class="input-text" name="plateID" placeholder="川A30525" />  
       </view>  
     </view>  
 
     <view class="section"> 
-      <view class="section__title">车位</view>  
+      <view class="section__title">车位地址</view>  
       <view class='form-group'>  
-        <input type="text" class="input-text" name="carportN" placeholder="区域-楼号-车位号" />  
+        <input type="text" class="Sinput-text" name="parkArea" placeholder="区域" />  
+        <input type="number" class="Sinput-text" name="parkBuild" placeholder="楼号" />
+        <input type="text" class="Sinput-text" name="parkNum" placeholder="车位号" />
       </view>   
     </view>  
     

@@ -5,14 +5,47 @@ Page({
    * 页面的初始数据
    */
   data: {
+    item: [{
+      parkArea: 'E',
+      parkBuild: 7,
+      parkNum: 121,
+      orderDate: '2018/3/21',
+      price: 5,
+      orderType:'租出',
+      orderState:"完成"
+    },
+    {
+      parkArea: 'E',
+      parkBuild: 7,
+      parkNum: 121,
+      orderDate: '2018/3/22',
+      price: 5,
+      orderType: '租出',
+      orderState:"发布中"
 
+    }]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    wx.request({
+      url: 'https://',
+      method: 'GET',
+      success: function (res) {
+        that.setData({
+          parkArea: res.data.result[0].parkArea,
+          parkBuild: res.data.result[0].parkBuild,
+          parkNum: res.data.result[0].parkNum,
+          orderDate: res.data.result[0].orderDate,
+          price: res.data.result[0].price,
+          orderType: res.data.result[0].orderType,
+          orderState: res.data.result[0].orderState
+        })
+      }
+    })
   },
 
   /**

@@ -13,6 +13,6 @@
 </view>
 
 <view class="PigText">
-    <text>您现拥有的猪猪币是: {{pigmoney}}个</text>
+    <text>猪猪币: {{purse}}个</text>
 </view> 
 

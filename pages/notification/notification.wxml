@@ -7,4 +7,16 @@
     <image bindtap="me" class="spic" src="../images/me.jpg" background-size="cover"></image>
   </view>
 </view>
-<view class='container'>loading…</view>
+
+<view>
+  <form >
+  <view wx:for="{{item}}" class="order">
+    <view class="orderInfor">
+        <view class="orderText">您有新订单交易成功~</view>
+        <view class="orderTextS">车位地址：{{item.parkArea}}-{{item.parkBuild}}-{{item.parkNum}}</view> 
+        <view class="orderTextS">交易时间：{{item.orderDate}}</view>
+        <view class="orderTextS">交易类型：{{item.orderType}}</view>
+    </view>
+  </view>
+  </form>
+</view>
