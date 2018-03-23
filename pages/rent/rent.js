@@ -5,18 +5,40 @@ Page({
    * 页面的初始数据
    */
   data: {
-    item:[{
+    item:[
+      {
       parkArea: 'E',
       parkBuild: 7,
-      parkNum: 121,
+      parkNum: 125,
       orderDate: '2018-3-21',
       price: 5
       },
+      {
+        parkArea: 'E',
+        parkBuild: 7,
+        parkNum: 127,
+        orderDate: '2018-3-21',
+        price: 5
+      },
+      {
+        parkArea: 'E',
+        parkBuild: 7,
+        parkNum: 129,
+        orderDate: '2018-3-21',
+        price: 5
+      },
+      {
+        parkArea: 'E',
+        parkBuild: 7,
+        parkNum: 141,
+        orderDate: '2018-3-21',
+        price: 5
+      },     
      {
       parkArea: 'E',
       parkBuild: 7,
       parkNum: 121,
-      orderDate: '2018-3-21',
+      orderDate: '2018-3-22',
       price: 5
       }]
   },

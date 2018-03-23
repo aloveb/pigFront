@@ -1,4 +1,6 @@
 //app.js
+const APPID ='wxd25d60dd44b61f3b'
+const SECRET ='d7059cad8ecb465b094a0f9ddc10e4e2'
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -10,7 +12,9 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+       
       }
+     
     })
     // 获取用户信息
     wx.getSetting({

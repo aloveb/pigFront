@@ -16,7 +16,7 @@ Page({
       parkArea: 'E',
       parkBuild: 7,
       parkNum: 121,
-      orderDate: '2018-3-21',
+      orderDate: '2018-3-22',
       orderType:'租出',
     }] 
   },

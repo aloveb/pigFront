@@ -4,6 +4,7 @@
     "pages/publish/publish",
     "pages/rent/rent",
     "pages/home/home",
+    "pages/regist/regist",
     "pages/me/me",
     "pages/notification/notification",
     "pages/publish/orderInfor/Add",

@@ -1,7 +1,6 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
 Page({
   data: {
     motto: 'GO GO GO!',
@@ -9,13 +8,49 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
+  //登录
+  
   //事件处理函数
   bindViewTap: function() {
+
     wx.navigateTo({
-      url: '../home/home'
+      url: '../regist/regist'
     })
   },
   onLoad: function () {
+    wx.login({
+      success: res => {
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        if (res.code) { //  第一步： 获取code
+          //发起网络请求
+          console.log("code:" + res.code)
+          wx.request({
+            url: 'https://rooti347933trial.hanatrial.ondemand.com/root/user/regist',
+            data: {
+              code: 2222
+            },
+            header: {
+              'content-type': 'application/json'
+            },
+            success: function (res) {
+              //openid = res.data.openid 返回openid
+              console.log("openid:" + res.data)
+            }
+          })
+          var check = false
+          if (check == false) {
+            //check为false时提示用户是否进行注册，确认后跳转到注册页面
+            wx.navigateTo({
+              url: '../regist/regist'
+            })
+          }
+        } else {
+          console.log('获取用户登录态失败！' + res.errMsg)
+        }
+      }
+
+    })
+
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
