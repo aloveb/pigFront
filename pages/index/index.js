@@ -25,7 +25,7 @@ Page({
           //发起网络请求
           console.log("code:" + res.code)
           wx.request({
-            url: ,
+            url: CHECK_USER,
             data: {
               code: 2222
             },
