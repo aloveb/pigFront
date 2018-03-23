@@ -25,7 +25,7 @@ Page({
           //发起网络请求
           console.log("code:" + res.code)
           wx.request({
-            url: 'https://rooti347933trial.hanatrial.ondemand.com/root/user/regist',
+            url: ,
             data: {
               code: 2222
             },
