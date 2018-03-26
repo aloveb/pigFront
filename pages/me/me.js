@@ -1,9 +1,22 @@
 // pages/me/me.js
-const app = getApp()
+const app = getApp();
+const INFOR_REQUEST = getApp().globalData.INFOR_REQUEST
 
 Page({
   //事件处理函数
   infor: function () {
+    console.log("cardId:" + getApp().globalData.cardId)
+    wx.request({
+      url: INFOR_REQUEST,
+      data: {
+        //等待确认参数
+      },
+      method: 'GET',
+      success: function (res) {
+        getApp().globalData.cardId = res.data.cardId
+        getApp().globalData.plateId = res.data.plateId
+      }
+    })
     wx.navigateTo({
       url: '../me/information/information'
     })

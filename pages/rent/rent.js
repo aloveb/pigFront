@@ -1,4 +1,6 @@
 // pages/tingche/tingche.js
+const app = getApp()
+const RENT_REQUEST = getApp().globalData.RENT_REQUEST
 Page({
 
   /**
@@ -49,7 +51,7 @@ Page({
   onLoad: function (options) {
     var that=this;
     wx.request({
-      url: 'https://',
+      url: RENT_REQUEST,
       method:'GET',
       success: function(res){
         that.setData({

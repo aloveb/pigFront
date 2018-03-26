@@ -1,6 +1,6 @@
 // pages/regist/regist.js
 const app = getApp()
-
+const REGIST = getApp().globalData.REGIST
 Page({
   data: {
     toast1Hidden: true,
@@ -21,6 +21,35 @@ Page({
   },
   confirm_one: function (e) {
     console.log(e);
+    wx.request({
+      url: REGIST,
+      data: {
+
+        userName: "橘子",
+        cardId: "456123",
+        openId: getApp().globalData.openId,
+        plateId: "川A12364"
+
+      },
+      method:'POST',
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log(res.data);//返回值为true则进入home页面
+        if(res.data==true){
+          wx.navigateTo({
+            url: '../home/home'
+          })
+        }
+        else if(res.data==false){
+          console.log("注册失败")
+          wx.navigateTo({
+            url: '../regist/regist'
+          })
+        }
+      }
+    })
     this.setData({
       modalHidden: true,
       toast1Hidden: false,
@@ -29,7 +58,8 @@ Page({
     //提交成功后进入home页面 需要后台验证用户信息
     wx.navigateTo({
       url: '../home/home'
-    });
+    })
+
   },
   cancel_one: function (e) {
     console.log(e);
@@ -52,20 +82,9 @@ Page({
   },
   formSubmit: function (e) {
     console.log(e.detail.value);
+    console.log("registeroid:"+getApp().globalData.openId)
     var that = this;
-    var formData = e.detail.value;
-    wx.request({
-      url: 'https://rooti347933trial.hanatrial.ondemand.com/root/user/regist',
-      data: formData,
-      method: 'POST',
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-        console.log(res.data);//返回值为true则进入home页面
-        that.modalTap();
-      }
-    })
+    that.modalTap();
   },
   formReset: function () {
     console.log('reset happened');

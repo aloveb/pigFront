@@ -1,4 +1,6 @@
 // pages/me/order/order.js
+const app = getApp()
+const ORDER_REQUEST = getApp().globalData.ORDER_REQUEST
 Page({
 
   /**
@@ -31,10 +33,13 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    var id=1
     wx.request({
-      url: 'https://',
+      url: ORDER_REQUEST+id,
       method: 'GET',
+    
       success: function (res) {
+        console.log("return order:"+res.data)
         that.setData({
           parkArea: res.data.result[0].parkArea,
           parkBuild: res.data.result[0].parkBuild,

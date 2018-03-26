@@ -1,4 +1,6 @@
 // pages/notification/notification.js
+const app = getApp()
+const NOTE_REQUEST = getApp().globalData.NOTE_REQUEST
 Page({
 
   /**
@@ -24,9 +26,13 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+
+  
   onLoad: function (options) {
+   
+    var that = this;
     wx.request({
-      url: 'https://',
+      url: NOTE_REQUEST,
       method: 'GET',
       success: function (res) {
         that.setData({

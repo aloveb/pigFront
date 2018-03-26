@@ -1,18 +1,48 @@
-// pages/publish/orderInfor/Add.js
-const app = getApp();
-const PUB_POST = getApp().globalData.PUB_POST
+const app = getApp()
+const EDIT_SUB = getApp().globalData.EDIT_SUB
+
 Page({
   data: {
-    // 
-    dateValue: '2018-03-19',
     toast1Hidden: true,
     modalHidden: true,
     modalHidden2: true,
     notice_str: ''
   },
-  datePickerBindchange: function (e) {
+  //事件处理函数
+  onLoad: function () {
+    if (app.globalData.userInfo) {
+      this.setData({
+        userInfo: app.globalData.userInfo,
+        hasUserInfo: true
+      })
+    } else if (this.data.canIUse) {
+      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+      // 所以此处加入 callback 以防止这种情况
+      app.userInfoReadyCallback = res => {
+        this.setData({
+          userInfo: res.userInfo,
+          hasUserInfo: true
+        })
+      }
+    } else {
+      // 在没有 open-type=getUserInfo 版本的兼容处理
+      wx.getUserInfo({
+        success: res => {
+          app.globalData.userInfo = res.userInfo
+          this.setData({
+            userInfo: res.userInfo,
+            hasUserInfo: true
+          })
+        }
+      })
+    }
+  },
+  getUserInfo: function (e) {
+    console.log(e)
+    app.globalData.userInfo = e.detail.userInfo
     this.setData({
-      dateValue: e.detail.value
+      userInfo: e.detail.userInfo,
+      hasUserInfo: true
     })
   },
   toast1Change: function (e) {
@@ -56,10 +86,8 @@ Page({
     var that = this;
     var formData = e.detail.value;
     wx.request({
-      url: PUB_POST,
-      data: {
-        formData
-      },
+      url: EDIT_SUB,
+      data: formData,
       method: 'POST',
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -71,7 +99,10 @@ Page({
     })
   },
   formReset: function () {
-    console.log('reset happened');
-    this.modalTap2();
+    //console.log('reset happened');
+    //this.modalTap2();
+    wx.navigateTo({
+      url: '../information'
+    })
   }
 })

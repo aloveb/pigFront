@@ -9,28 +9,24 @@
     </view>
   </view>
 
-  <form bindsubmit='formSubmit' bindreset='formReset'>
+  <view class="form-edit" bindtap='editInfor'>
+    <image class="editPic" src="../../images/me.jpg"></image>
+  </view>
 
     <view class="section">  
-      <view class="section__title">园区卡号</view>  
+      <view class="section__title">园区卡号:</view>  
       <view class='form-group'>  
-        <input type="text" class="input-text" name='carID' placeholder="66231100" />  
+        {{cardId}}  
       </view>
     </view>  
 
     <view class="section">    
-      <view class="section__title">车牌号</view>  
+      <view class="section__title">车牌号:</view>  
       <view class='form-group'>  
-        <input type="number" class="input-text" name="plateID" placeholder="川A30525" />  
+        {{plateId}}  
       </view>  
     </view>  
-    
-    <view class="btn-area">  
-      <button formType="submit" class="sub">提交</button> 
-      <button formType="reset" class="res">取消</button> 
-    </view> 
 
-  </form>
 
  <!-- 黑框提示并消失 -->  
     <toast hidden="{{toast1Hidden}}" bindchange="toast1Change">  

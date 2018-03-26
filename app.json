@@ -9,6 +9,7 @@
     "pages/notification/notification",
     "pages/publish/orderInfor/Add",
     "pages/me/information/information",
+    "pages/me/information/edit/edit",
     "pages/me/order/order",
     "pages/me/purse/purse"
   ],

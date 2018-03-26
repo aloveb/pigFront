@@ -1,7 +1,11 @@
 <view id='information'>
   <view class="top-me"> 
     <view class="userinfo">
-      <text>用户注册</text>
+      <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <block wx:else>
+        <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      </block>
     </view>
   </view>
 
@@ -10,14 +14,14 @@
     <view class="section">  
       <view class="section__title">园区卡号</view>  
       <view class='form-group'>  
-        <input type="text" class="input-text" name='carID' placeholder="数字" />  
+        <input type="text" class="input-text" name='carID' placeholder="66231100" />  
       </view>
     </view>  
 
     <view class="section">    
       <view class="section__title">车牌号</view>  
       <view class='form-group'>  
-        <input type="text" class="input-text" name="plateID" placeholder="川A30525" />  
+        <input type="number" class="input-text" name="plateID" placeholder="川A30525" />  
       </view>  
     </view>  
     

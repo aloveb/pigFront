@@ -1,4 +1,7 @@
 // pages/me/purse/purse.js
+const app = getApp()
+const PURSE_REQUEST = getApp().globalData.PURSE_REQUEST
+
 Page({
 
   /**
@@ -14,7 +17,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     wx.request({
-      url: 'https://',
+      url: PURSE_REQUEST,
       method: 'GET',
       success: function (res) {
         that.setData({

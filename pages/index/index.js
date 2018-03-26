@@ -1,6 +1,13 @@
 //index.js
 //获取应用实例
 const app = getApp()
+const CHECK_USER = getApp().globalData.CHECK_USER
+const GET_OPENID = getApp().globalData.GET_OPENID
+
+const APP_ID = 'wxcc704198b07ae345';//输入小程序appid  
+const APP_SECRET = '623f8a05e0a330bb9f6dfc21f46943ad';//输入小程序app_secret  
+var openId = getApp().globalData.openId//储存获取到openid  
+
 Page({
   data: {
     motto: 'GO GO GO!',
@@ -24,24 +31,51 @@ Page({
         if (res.code) { //  第一步： 获取code
           //发起网络请求
           console.log("code:" + res.code)
+          //console.log(code)
+          var CODE = res.code
+          console.log(CODE)
           wx.request({
-            url: CHECK_USER,
+            url: 'https://api.weixin.qq.com/sns/jscode2session',
             data: {
-              code: 2222
+              appid: APP_ID,
+              secret: APP_SECRET,
+              js_code: CODE,
+              grant_type: 'authorization_code'
             },
+            method:'GET',
+            success: function (res) {
+              //返回
+             // OPEN_ID = res.data.openid
+              console.log("openId:"+ res.data.openid)
+              openId=res.data.openid
+              getApp().globalData.openId = res.data.openid
+              console.log("global"+getApp().globalData.openId)
+            }
+          })
+         
+          wx.request({
+            url: CHECK_USER+openId,
+          //  data: {
+            //  openId
+          //  },
             header: {
               'content-type': 'application/json'
             },
             success: function (res) {
-              //openid = res.data.openid 返回openid
-              console.log("openid:" + res.data)
+              //返回
+              console.log("checkResult:"+res.data)
             }
-          })
-          var check = false
-          if (check == false) {
+          }) 
+          if (res.data == null) {
             //check为false时提示用户是否进行注册，确认后跳转到注册页面
             wx.navigateTo({
               url: '../regist/regist'
+            })
+          }
+          else if (res.data == true) {
+            //check为false时提示用户是否进行注册，确认后跳转到注册页面
+            wx.navigateTo({
+              url: '../home/home'
             })
           }
         } else {

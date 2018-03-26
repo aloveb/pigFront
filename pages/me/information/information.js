@@ -1,13 +1,18 @@
 // pages/me/information/information.js
 //取微信的openID  API配置文件  陆续调逻辑
 const app = getApp()
+var card = getApp().globalData.cardId
+var plate = getApp().globalData.plateId
+
 
 Page({
   data: {
     toast1Hidden: true,
     modalHidden: true,
     modalHidden2: true,
-    notice_str: ''
+    notice_str: '',
+    cardId: card,
+    plateId:plate
   },  
   //事件处理函数
   onLoad: function () {
@@ -46,61 +51,9 @@ Page({
       hasUserInfo: true
     })
   },
-  toast1Change: function (e) {
-    this.setData({ toast1Hidden: true });
-  }, 
-  //弹出确认框
-  modalTap: function (e) {
-    this.setData({
-      modalHidden: false
+  editInfor: function(e) {
+    wx.navigateTo({
+      url: '../information/edit/edit'
     })
-  },
-  confirm_one: function (e) {
-    console.log(e);
-    this.setData({
-      modalHidden: true,
-      toast1Hidden: false,
-      notice_str: '提交成功'
-    });
-  },
-  cancel_one: function (e) {
-    console.log(e);
-    this.setData({
-      modalHidden: true,
-      toast1Hidden: false,
-      notice_str: '取消成功'
-    });
-  },
-  //弹出提示框  
-  modalTap2: function (e) {
-    this.setData({
-      modalHidden2: false
-    })
-  },
-  modalChange2: function (e) {
-    this.setData({
-      modalHidden2: true
-    })
-  },
-  formSubmit: function(e){
-    console.log(e.detail.value);
-    var that=this;
-    var formData=e.detail.value;
-    wx.request({
-      url: 'https://',
-      data: formData, 
-      method:'POST',
-      header:{
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      success:function(res){
-        console.log(res.data);
-        that.modalTap();
-      }
-    })
-  },
-  formReset: function(){
-    console.log('reset happened');
-    this.modalTap2();
   }
 })
