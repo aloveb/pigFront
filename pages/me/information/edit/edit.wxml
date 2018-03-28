@@ -14,14 +14,14 @@
     <view class="section">  
       <view class="section__title">园区卡号</view>  
       <view class='form-group'>  
-        <input type="text" class="input-text" name='carID' placeholder="66231100" />  
+        <input type="text" class="input-text" name='carID' placeholder='{{card}}' />  
       </view>
     </view>  
 
     <view class="section">    
       <view class="section__title">车牌号</view>  
       <view class='form-group'>  
-        <input type="number" class="input-text" name="plateID" placeholder="川A30525" />  
+        <input type="number" class="input-text" name="plateID" placeholder='{{plate}}' />  
       </view>  
     </view>  
     

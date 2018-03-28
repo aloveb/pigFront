@@ -5,7 +5,7 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
+   // var openId = wx.getStorageSync('OPENID')
     // 登录
     wx.login({
       success: res => {
@@ -37,15 +37,15 @@ App({
   },
   globalData: {
     userInfo: null,
-    plateId: '川A452148',
-    cardId: '635214',
+    plateId: '',
+    cardId: '',
     openId:'',
-    CHECK_USER:'https://rooti347933trial.hanatrial.ondemand.com/user/checkUser?openId=',//进入时check用户是否登陆
-    GET_OPENID: 'https://api.weixin.qq.com/sns/jscode2session',  //从微信短获取openid
-    EDIT_SUB: 'https://rooti347933trial.hanatrial.ondemand.com/user/register/', //个人信息编辑
-    ORDER_REQUEST: 'https://rooti347933trial.hanatrial.ondemand.com/order/getOrderListByUser?id=', //请求订单信息
-    PURSE_REQUEST: 'https://rooti347933trial.hanatrial.ondemand.com/user/regist/',  //钱包余额
-    INFOR_REQUEST: 'https://rooti347933trial.hanatrial.ondemand.com/user/regist/',  //查看用户信息
+    CHECK_USER:'https://rooti347933trial.hanatrial.ondemand.com/user/checkuser?openId=',    //进入时check用户是否登陆
+    GET_OPENID: 'https://api.weixin.qq.com/sns/jscode2session',  //从微信短获取openid （通）
+    EDIT_SUB: 'https://rooti347933trial.hanatrial.ondemand.com/user/edit', //个人信息编辑
+    ORDER_REQUEST: 'https://rooti347933trial.hanatrial.ondemand.com/order/getOrderListByUser?id=', //请求订单信息(通)
+    PURSE_REQUEST: 'https://rooti347933trial.hanatrial.ondemand.com/user/purse?id=',  //钱包余额
+  //  INFOR_REQUEST: 'https://rooti347933trial.hanatrial.ondemand.com/user/regist/',  //查看用户信息
     NOTE_REQUEST: 'https://rooti347933trial.hanatrial.ondemand.com/user/regist/',  //notification信息请求
     PUB_POST: 'https://rooti347933trial.hanatrial.ondemand.com/order/add',  //新订单信息提交
     REGIST: 'https://rooti347933trial.hanatrial.ondemand.com/user/register',  //注册

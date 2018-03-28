@@ -10,7 +10,7 @@
   </view>
 
   <view class="form-edit" bindtap='editInfor'>
-    <image class="editPic" src="../../images/me.jpg"></image>
+    <image class="editPic" src="../../images/edit.jpg"></image>
   </view>
 
     <view class="section">  

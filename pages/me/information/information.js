@@ -1,9 +1,10 @@
 // pages/me/information/information.js
 //取微信的openID  API配置文件  陆续调逻辑
 const app = getApp()
-var card = getApp().globalData.cardId
-var plate = getApp().globalData.plateId
-
+//var card = getApp().globalData.cardId
+//var plate = getApp().globalData.plateId
+var cardId = wx.getStorageSync('CARDID')
+var plateId = wx.getStorageSync('PLATENUM')
 
 Page({
   data: {
@@ -11,11 +12,14 @@ Page({
     modalHidden: true,
     modalHidden2: true,
     notice_str: '',
-    cardId: card,
-    plateId:plate
+    cardId: wx.getStorageSync('CARDID'),
+    plateId: wx.getStorageSync('PLATENUM')
+ 
   },  
   //事件处理函数
   onLoad: function () {
+   // cardId = wx.getStorageSync('CARDID')
+   // plateId = wx.getStorageSync('PLATENUM')
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

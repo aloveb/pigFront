@@ -26,11 +26,35 @@ Page({
   },
   confirm_one: function (e) {
     console.log(e);
+   // var formData = e.detail.value;
+    wx.request({
+      url: PUB_POST,
+      dataType: 'json',
+      data: JSON.stringify({
+
+        rentId: 1,
+        tenatId: null,
+        parkArea: "E",
+        parkBuild: 6,
+        parkNum: "152",
+        price: 20
+
+      }),
+
+      method: 'POST',
+      success: (res) => {
+        console.log(res.data);
+
+      }
+    })
     this.setData({
       modalHidden: true,
       toast1Hidden: false,
       notice_str: '提交成功'
     });
+    wx.navigateTo({
+      url: '../../publish/publish',
+    })
   },
   cancel_one: function (e) {
     console.log(e);
@@ -52,23 +76,10 @@ Page({
     })
   },
   formSubmit: function (e) {
-    console.log(e.detail.value);
+  //  console.log(e.detail.value);
     var that = this;
-    var formData = e.detail.value;
-    wx.request({
-      url: PUB_POST,
-      data: {
-        formData
-      },
-      method: 'POST',
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-        console.log(res.data);
-        that.modalTap();
-      }
-    })
+    that.modalTap();
+    
   },
   formReset: function () {
     console.log('reset happened');

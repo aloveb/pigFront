@@ -8,13 +8,19 @@
   </view>
 </view>
 
+<!--无历史订单-->
+<view class="Note" hidden="{{orderNote}}">
+  <text class="NoteText">空空如也，快去下单吧！</text>
+</view>
+
 <!--历史订单-->
 <view>
   <form >
   <view wx:for="{{item}}" class="order">
     <view class="orderInfor">
         <view class="orderText">车位地址：{{item.parkArea}}-{{item.parkBuild}}-{{item.parkNum}}</view> 
-        <view class="orderText">日期：{{item.orderDate}} ------ 类型：{{item.orderType}}</view>
+        <view wx:if="{{item.rentId == id}}" class="orderText">日期：{{item.orderDate}} ------ 类型：租主</view>
+        <view wx:else class="orderText">日期：{{item.releaseDate}} ------ 类型：租户</view>
         <view class="orderText">价格：{{item.price}} 猪猪币 ------ 状态：{{item.orderState}}</view>
     </view>
     <view class="orderButton">

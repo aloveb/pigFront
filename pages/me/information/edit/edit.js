@@ -1,12 +1,19 @@
 const app = getApp()
 const EDIT_SUB = getApp().globalData.EDIT_SUB
 
+var card = wx.getStorageSync('CARDID')
+var plate = wx.getStorageSync('PLATENUM')
+var cardId
+var plateNum
+
 Page({
   data: {
     toast1Hidden: true,
     modalHidden: true,
     modalHidden2: true,
-    notice_str: ''
+    notice_str: '',
+    card,
+    plate
   },
   //事件处理函数
   onLoad: function () {
@@ -56,11 +63,33 @@ Page({
   },
   confirm_one: function (e) {
     console.log(e);
+    //  wx.setStorageSync('CARDID', e.detail.value.carID)
+    // wx.setStorageSync('PLATEID', e.detail.value.plateID)
+    wx.request({
+      url: EDIT_SUB,
+      data: {
+        id: wx.getStorageSync('ID'),
+        userName: 'lulu',
+        cardId,
+        plateNum,
+      },
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log(res.data);
+
+      }
+    })
     this.setData({
       modalHidden: true,
       toast1Hidden: false,
       notice_str: '提交成功'
     });
+    wx.navigateTo({
+      url: '../information',
+    })
   },
   cancel_one: function (e) {
     console.log(e);
@@ -82,21 +111,11 @@ Page({
     })
   },
   formSubmit: function (e) {
-    console.log(e.detail.value);
     var that = this;
-    var formData = e.detail.value;
-    wx.request({
-      url: EDIT_SUB,
-      data: formData,
-      method: 'POST',
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-        console.log(res.data);
-        that.modalTap();
-      }
-    })
+    that.modalTap();
+    cardId = e.detail.value.carID;
+    plateNum = e.detail.value.plateID;
+
   },
   formReset: function () {
     //console.log('reset happened');

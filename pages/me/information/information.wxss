@@ -65,5 +65,5 @@
   width: 68rpx;
   height: 68rpx;
   margin: 5rpx;
-  border-radius: 50%;
+  border-radius: 15rpx;
 }

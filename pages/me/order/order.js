@@ -1,31 +1,30 @@
 // pages/me/order/order.js
 const app = getApp()
 const ORDER_REQUEST = getApp().globalData.ORDER_REQUEST
-Page({
+var id = wx.getStorageSync('ID')
+var orderNote 
 
+Page({
+   
   /**
    * 页面的初始数据
    */
   data: {
-    item: [{
-      parkArea: 'E',
-      parkBuild: 7,
-      parkNum: 121,
-      orderDate: '2018/3/21',
-      price: 5,
-      orderType:'租出',
-      orderState:"完成"
-    },
-    {
-      parkArea: 'E',
-      parkBuild: 7,
-      parkNum: 121,
-      orderDate: '2018/3/22',
-      price: 5,
-      orderType: '租出',
-      orderState:"发布中"
-
-    }]
+    
+   orderNote:true,
+   item: [{
+      rentId: '',
+      tenamtId:'',
+      parkArea: '',
+      parkBuild:'',
+      parkNum:'',
+      releaseDate:'',
+      confirmDate:'',
+      orderDate:'',
+      price: '',
+      orderState:'',
+      oederId: ''
+    }]  
   },
 
   /**
@@ -39,16 +38,29 @@ Page({
       method: 'GET',
     
       success: function (res) {
-        console.log("return order:"+res.data)
+       // console.log("return order:"+res.data)
+        if (res.data===null){
+          console.log("no data")
+          orderNote=false
+        };
+
         that.setData({
-          parkArea: res.data.result[0].parkArea,
-          parkBuild: res.data.result[0].parkBuild,
-          parkNum: res.data.result[0].parkNum,
-          orderDate: res.data.result[0].orderDate,
-          price: res.data.result[0].price,
-          orderType: res.data.result[0].orderType,
-          orderState: res.data.result[0].orderState
+          item:res.data,
+          /*
+          rentId: res.data.rentId,
+          tenamtId: res.data.tenamtId,
+          parkArea: res.data.parkArea,
+          parkBuild: res.data.parkBuild,
+          parkNum: res.data.parkNum,
+          releaseDate: res.data.item.releaseDate,
+          confirmDate: res.data.confirmDate,
+          orderDate: res.data.orderDate,
+          price: res.data.price,
+          orderType: res.data.orderType,
+          orderState: res.data.orderState,
+          oederId: res.data.oederId   */
         })
+   
       }
     })
   },

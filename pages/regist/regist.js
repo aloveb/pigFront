@@ -1,12 +1,17 @@
 // pages/regist/regist.js
 const app = getApp()
 const REGIST = getApp().globalData.REGIST
+var cardId=''
+var plateNum=''
+var openId = wx.getStorageSync('OPENID')
+
 Page({
   data: {
     toast1Hidden: true,
     modalHidden: true,
     modalHidden2: true,
-    notice_str: ''
+    notice_str: '',
+    openId: wx.getStorageSync('OPENID')
   },
   //事件处理函数
 
@@ -20,45 +25,50 @@ Page({
     })
   },
   confirm_one: function (e) {
-    console.log(e);
+    console.log("registLogId:"+openId);
     wx.request({
       url: REGIST,
-      data: {
-
-        userName: "橘子",
-        cardId: "456123",
-        openId: getApp().globalData.openId,
-        plateId: "川A12364"
-
-      },
+      dataType:'json',
+      data: JSON.stringify({
+        userName: "lulu",
+        cardId,
+        openId,
+        plateNum
+      }),
       method:'POST',
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
+      success: (res) => {
         console.log(res.data);//返回值为true则进入home页面
-        if(res.data==true){
-          wx.navigateTo({
-            url: '../home/home'
-          })
-        }
-        else if(res.data==false){
-          console.log("注册失败")
-          wx.navigateTo({
-            url: '../regist/regist'
-          })
+        if(res.data){
+          this.setData({
+            modalHidden: true,
+            toast1Hidden: false,
+            notice_str: '注册成功'
+          });
+          setTimeout(function () {
+            wx.navigateTo({
+              url: '../home/home'
+            })
+          }, 2000
+          )
+    
+        } else {
+          this.setData({
+            modalHidden: true,
+            toast1Hidden: false,
+            notice_str: '注册失败'
+          });
+          setTimeout(function () {
+            modalHidden: false
+            toast1Hidden: true
+          }, 2000
+          )
         }
       }
     })
-    this.setData({
-      modalHidden: true,
-      toast1Hidden: false,
-      notice_str: '提交成功'
-    });
-    //提交成功后进入home页面 需要后台验证用户信息
-    wx.navigateTo({
-      url: '../home/home'
-    })
+    //自动进入到home页面 仅调试用
+   // wx.navigateTo({
+   //   url: '../home/home'
+ //   })
 
   },
   cancel_one: function (e) {
@@ -82,7 +92,8 @@ Page({
   },
   formSubmit: function (e) {
     console.log(e.detail.value);
-    console.log("registeroid:"+getApp().globalData.openId)
+    cardId = e.detail.value.carID;
+    plateNum = e.detail.value.plateID;
     var that = this;
     that.modalTap();
   },
