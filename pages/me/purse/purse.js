@@ -1,33 +1,38 @@
 // pages/me/purse/purse.js
 const app = getApp()
 const PURSE_REQUEST = getApp().globalData.PURSE_REQUEST
-var id = wx.getStorageSync('ID')
 
-var purse = wx.getStorageSync('PURSE')
+//var purse = wx.getStorageSync('PURSE')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    purse,
-    id
+    purse:'',
+    id:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;/*
+    var that = this;
+    let id = wx.getStorageSync('ID')
+    let purse = wx.getStorageSync('PURSE')
+   // let purseI = wx.getStorageSync('PURSE');
+  //  purse = wx.getStorageSync('PURSE')
+    console.log("purseId:"+id)
     wx.request({
       url: PURSE_REQUEST+id,
       method: 'GET',
-      success: function (res) {
+      success: (res) => {
+        console.log("purseRes:"+res.data)
         that.setData({
-          purse: res.data.result[0].purse
+          purse:res.data
         })
       }
-    })*/
+    })
   },
 
   /**

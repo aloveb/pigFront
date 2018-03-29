@@ -46,7 +46,7 @@ Page({
 
         that.setData({
           item:res.data,
-          /*
+      /*
           rentId: res.data.rentId,
           tenamtId: res.data.tenamtId,
           parkArea: res.data.parkArea,
@@ -62,6 +62,11 @@ Page({
         })
    
       }
+    })
+  },
+  editOrder: function () {
+    wx.navigateTo({
+      url: '../order/editOrder/editOrder'
     })
   },
 

@@ -1,10 +1,10 @@
 const app = getApp()
 const EDIT_SUB = getApp().globalData.EDIT_SUB
 
-var card = wx.getStorageSync('CARDID')
-var plate = wx.getStorageSync('PLATENUM')
-var cardId
-var plateNum
+var cardId = wx.getStorageSync('CARDID')
+var plateNum = wx.getStorageSync('PLATENUM')
+//var cardId
+//var plateNum
 
 Page({
   data: {
@@ -12,8 +12,8 @@ Page({
     modalHidden: true,
     modalHidden2: true,
     notice_str: '',
-    card,
-    plate
+    cardId,
+    plateNum
   },
   //事件处理函数
   onLoad: function () {
@@ -65,6 +65,8 @@ Page({
     console.log(e);
     //  wx.setStorageSync('CARDID', e.detail.value.carID)
     // wx.setStorageSync('PLATEID', e.detail.value.plateID)
+    wx.setStorageSync('CARDID', cardId)
+    wx.setStorageSync('PLATENUM', plateNum)
     wx.request({
       url: EDIT_SUB,
       data: {
@@ -73,15 +75,14 @@ Page({
         cardId,
         plateNum,
       },
-      method: 'POST',
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
+      method:'PUT',
       success: function (res) {
         console.log(res.data);
 
       }
     })
+   // wx.setStorageSync('CARDID', cardId)
+   // wx.setStorageSync('PLATEID', plateNum)
     this.setData({
       modalHidden: true,
       toast1Hidden: false,

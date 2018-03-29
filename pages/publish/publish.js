@@ -44,18 +44,17 @@ Page({
         that.setData({
           item: res.data,
           /*
-          rentId: res.data.rentId,
-          tenamtId: res.data.tenamtId,
-          parkArea: res.data.parkArea,
-          parkBuild: res.data.parkBuild,
-          parkNum: res.data.parkNum,
-          releaseDate: res.data.item.releaseDate,
-          confirmDate: res.data.confirmDate,
-          orderDate: res.data.orderDate,
-          price: res.data.price,
-          orderType: res.data.orderType,
-          orderState: res.data.orderState,
-          oederId: res.data.oederId   */
+          [rentId]: res.data.rentId,
+          [tenamtId]: res.data.tenamtId,
+          [parkArea]: res.data.parkArea,
+          [parkBuild]: res.data.parkBuild,
+          [parkNum]: res.data.parkNum,
+          [releaseDate]: res.data.item.releaseDate,
+          [confirmDate]: res.data.confirmDate,
+          [orderDate]: res.data.orderDate,
+          [price]: res.data.price,
+          [orderState]: res.data.orderState,
+          [oederId]: res.data.oederId   */
         })
 
       }
@@ -77,6 +76,11 @@ Page({
   note: function () {
     wx.navigateTo({
       url: '../notification/notification'
+    })
+  },
+  editOrder: function () {
+    wx.navigateTo({
+      url: '../me/order/editOrder/editOrder'
     })
   },
   

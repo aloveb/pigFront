@@ -3,7 +3,7 @@ const app = getApp()
 const REGIST = getApp().globalData.REGIST
 var cardId=''
 var plateNum=''
-var openId = wx.getStorageSync('OPENID')
+var openId //= wx.getStorageSync('OPENID')
 
 Page({
   data: {
@@ -11,7 +11,7 @@ Page({
     modalHidden: true,
     modalHidden2: true,
     notice_str: '',
-    openId: wx.getStorageSync('OPENID')
+    openId//: wx.getStorageSync('OPENID')
   },
   //事件处理函数
 
@@ -38,7 +38,7 @@ Page({
       method:'POST',
       success: (res) => {
         console.log(res.data);//返回值为true则进入home页面
-        if(res.data){
+        if(res.data.id){
           this.setData({
             modalHidden: true,
             toast1Hidden: false,
@@ -94,6 +94,7 @@ Page({
     console.log(e.detail.value);
     cardId = e.detail.value.carID;
     plateNum = e.detail.value.plateID;
+    openId = wx.getStorageSync('OPENID')
     var that = this;
     that.modalTap();
   },

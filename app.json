@@ -12,6 +12,7 @@
     "pages/me/information/information",
     "pages/me/information/edit/edit",
     "pages/me/order/order",
+    "pages/me/order/editOrder/editOrder",
     "pages/me/purse/purse"
   ],
   "window": {

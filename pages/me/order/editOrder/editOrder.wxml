@@ -2,11 +2,11 @@
 
   <view class="top">
     <view class="rig">
-    <image bindtap="note" class="spic" src="../../images/note.jpg" background-size="cover"></image>
+    <image bindtap="note" class="spic" src="../../../images/note.jpg" background-size="cover"></image>
     </view>
-  <view class="addtext">发布新订单</view>
+  <view class="addtext">编辑订单</view>
     <view class="lef">
-      <image bindtap="me" class="spic" src="../../images/me.jpg" background-size="cover"></image>
+      <image bindtap="me" class="spic" src="../../../images/me.jpg" background-size="cover"></image>
     </view>
   </view>
 
@@ -15,21 +15,21 @@
   <view class="section">  
     <view class="section__title">区域</view>  
     <view class='form-group'>  
-      <input type="text" class="input-text" name="parkArea" placeholder="A/B/C/D/E" />  
+      <input type="text" class="input-text" name="parkArea" placeholder="{{parkArea}}" />  
     </view>    
   </view>  
 
   <view class="section">   
     <view class="section__title">楼号</view>  
     <view class='form-group'>  
-      <input type="number" class="input-text" name="parkBuild" placeholder="number" />  
+      <input type="number" class="input-text" name="parkBuild" placeholder="{{parkBuild}}" />  
     </view> 
   </view>   
 
   <view class="section">    
     <view class="section__title">车位号</view>  
     <view class='form-group'>  
-      <input type="number" class="input-text" name="parkNum" placeholder="number" />  
+      <input type="number" class="input-text" name="parkNum" placeholder="{{parkNum}}" />  
     </view> 
   </view>  
 
@@ -49,13 +49,23 @@
   <view class="section section_gap">  
     <view class="section__title">
       <text>免费</text>
-      <switch name="charge"/> 
+      <switch name="charge" checked='{{check}}' bindchange='changeSwitch'/> 
     </view>  
-    <view class='form-group2'>  
-      <input type="number" class="input-text2" name="price" placeholder="5" >
+<!-- 判断是否免费 --> 
+    <view wx:if="{{!check }}" class="orderText">
+      <view class='form-group2'>  
+      <text > 0 元</text>
+      </view> 
+    </view>    
+    <view wx:elif="{{check}}" class="orderText">
+      <view class='form-group2'>  
+      <input type="number" class="input-text2" name="price" placeholder="0" >
       </input>
       <text>元</text>
-    </view>  
+      </view> 
+    </view>
+ 
+
   </view>  
 
   <view class="btn-area">  

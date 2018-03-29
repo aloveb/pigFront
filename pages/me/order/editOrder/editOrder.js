@@ -1,13 +1,15 @@
-// pages/publish/orderInfor/Add.js
+// pages/me/order/editOrder/editOrder.js
 const app = getApp();
-const PUB_POST = getApp().globalData.PUB_POST
+const PUB_EDIT = getApp().globalData.EDIT
 var rentId
 var tenatId
 var parkArea
 var parkBuild
 var parkNum
-var price 
+var price
 var orderDate
+var check=false
+
 Page({
   data: {
     // 
@@ -34,28 +36,27 @@ Page({
   },
   confirm_one: function (e) {
     console.log(e);
-   // var formData = e.detail.value;
+    // var formData = e.detail.value;
     wx.request({
-      url: PUB_POST,
+      url: PUB_EDIT,
       dataType: 'json',
       data: JSON.stringify({
 
         rentId: 1,
         tenatId: null,
-        orderDate,
         parkArea,
         parkBuild,
         parkNum,
-        price
+        price,
+        releaseDate:'',
+        confirmDate:'',
+        orderDate,
+        orderState:2,
+        orderId:2
 
       }),
-
-      method: 'POST',
       success: (res) => {
-        console.log(res.data);
-        wx.navigateTo({
-          url: '../../publish/publish',
-        })
+        console.log('editOrderRes:'+res.data);
 
       }
     })
@@ -64,6 +65,9 @@ Page({
       toast1Hidden: false,
       notice_str: '提交成功'
     });
+    wx.navigateTo({
+      url: '../../publish/publish',
+    })
   },
   cancel_one: function (e) {
     console.log(e);
@@ -90,14 +94,23 @@ Page({
     parkBuild = e.detail.value.parkBuild;
     parkNum = e.detail.value.parkNum;
     orderDate = e.detail.value.orderDate;
-    price = e.detail.value.price;
+    console.log("switch:"+check)
+    if(charge){
+      price=0
+    }else{
+      price = e.detail.value.price;
+    }
     var that = this;
     that.modalTap();
 
-    
+
   },
   formReset: function () {
     console.log('reset happened');
     this.modalTap2();
+  },
+  changeSwitch: function(){
+    check = !check;
+    console.log("check:"+check)
   }
 })
