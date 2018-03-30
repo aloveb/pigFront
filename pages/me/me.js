@@ -4,6 +4,11 @@ const app = getApp();
 
 Page({
   //事件处理函数
+  toHome: function () {
+    wx.navigateTo({
+      url: '../home/home'
+    })
+  },  
   infor: function () {
     wx.navigateTo({
       url: '../me/information/information'

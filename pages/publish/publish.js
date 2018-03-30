@@ -34,7 +34,10 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    var id = 1
+    that.setData({
+      id: wx.getStorageSync('ID')
+    })
+ //   var id = 1
     wx.request({
       url: ORDER_REQUEST + id,
       method: 'GET',
@@ -105,7 +108,7 @@ Page({
     wx.request({
       url: ORDER_DELETE,
       data:({
-        orderId: 2,
+        orderId: 20,
       }),
       success: (res) => {
         console.log(res.data);
@@ -114,6 +117,10 @@ Page({
           toast1Hidden: false,
           notice_str: '提交成功'
         });
+        wx.navigateTo({
+          url: '../publish/publish'
+        })
+
       },
       //没有正常弹出
       fail: function () {  

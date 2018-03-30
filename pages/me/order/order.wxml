@@ -19,13 +19,14 @@
   <view wx:for="{{item}}" class="order">
     <view class="orderInfor">
         <view class="orderText">车位地址：{{item.parkArea}}-{{item.parkBuild}}-{{item.parkNum}}</view> 
-        <view wx:if="{{item.rentId == id}}" class="orderText">日期：{{item.orderDate}} ------ 类型：租主</view>
-        <view wx:else class="orderText">日期：{{item.releaseDate}} ------ 类型：租户</view>
+        <view wx:if="{{item.rentId == id}}" class="orderText">日期：{{item.orderDate}}------ 类型：租主</view>
+        <view wx:else class="orderText">日期：{{item.orderDate}} ------ 类型：租户</view>
         <view wx:if="{{item.orderState == 1}}" class="orderText">价格：{{item.price}} 猪猪币 ------ 状态：发布中</view>
         <view wx:elif="{{item.orderState == 2}}" class="orderText">价格：{{item.price}} 猪猪币 ------ 状态：租借中</view>
         <view wx:elif="{{item.orderState == 3}}" class="orderText">价格：{{item.price}} 猪猪币 ------ 状态：完成</view>
         <view wx:else class="orderText">价格：{{item.price}} 猪猪币 ------ 状态：已过期</view>
     </view>
+    <view wx:if="{{item.orderState == 1}}"  >
     <view class="orderButton">
       <button bindtap="editOrder" class="button1">
         <image class="spic" src="../../images/edit.jpg">编辑</image>
@@ -33,6 +34,7 @@
       <button bindtap="deleteOrder" class="button1">
        <image class="spic" src="../../images/delete.jpg">删除</image>
        </button>    
+    </view>
     </view>
   </view>
   </form>

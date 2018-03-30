@@ -1,7 +1,7 @@
 // pages/publish/orderInfor/Add.js
 const app = getApp();
 const PUB_POST = getApp().globalData.PUB_POST
-var rentId
+var rentId = wx.getStorageSync('ID')
 var tenatId
 var parkArea
 var parkBuild
@@ -40,12 +40,16 @@ Page({
   confirm_one: function (e) {
     console.log(e);
    // var formData = e.detail.value;
+    var that=this
+    that.setData({
+      rentId: wx.getStorageSync('ID')
+    })
     wx.request({
       url: PUB_POST,
       dataType: 'json',
       data: JSON.stringify({
 
-        rentId: 1,
+        rentId,
         tenatId: null,
         orderDate,
         parkArea,

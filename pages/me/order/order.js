@@ -3,7 +3,8 @@ const app = getApp()
 const ORDER_REQUEST = getApp().globalData.ORDER_REQUEST
 const ORDER_DELETE = getApp().globalData.ORDER_DELETE
 var id = wx.getStorageSync('ID')
-var orderNote 
+
+//var orderNote 
 
 Page({
    
@@ -37,7 +38,10 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    var id=1
+    that.setData({
+      id: wx.getStorageSync('ID')
+    })
+   // var id=1
     wx.request({
       url: ORDER_REQUEST+id,
       method: 'GET',
@@ -46,11 +50,13 @@ Page({
        // console.log("return order:"+res.data)
         if (res.data===null){
           console.log("no data")
-          orderNote=false
-        };
-
-        that.setData({
-          item:res.data,
+          that.setData({
+            orderNote:false
+          })
+        
+        } else {
+          that.setData({
+            item:res.data,
       /*
           rentId: res.data.rentId,
           tenamtId: res.data.tenamtId,
@@ -65,6 +71,7 @@ Page({
           orderState: res.data.orderState,
           oederId: res.data.oederId   */
         })
+        }
    
       }
     })

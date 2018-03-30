@@ -14,6 +14,9 @@ Page({
   data: {
     // 
     dateValue: '2018-03-29',
+    parkArea:'A',
+    parkBuild:'7',
+    parkNum:'123',
     toast1Hidden: true,
     modalHidden: true,
     modalHidden2: true,
@@ -58,7 +61,11 @@ Page({
       }),
       success: (res) => {
         console.log('editOrderRes:'+res.data);
-
+        this.setData({
+          modalHidden: true,
+          toast1Hidden: false,
+          notice_str: '提交成功'
+        });
       }
     })
     this.setData({
@@ -67,7 +74,7 @@ Page({
       notice_str: '提交成功'
     });
     wx.navigateTo({
-      url: '../../publish/publish',
+      url: '../../../publish/publish',
     })
   },
   cancel_one: function (e) {
@@ -108,8 +115,9 @@ Page({
 
   },
   formReset: function () {
-    console.log('reset happened');
-    this.modalTap2();
+    wx.navigateTo({
+      url: '../../../publish/publish',
+    })
   },
   changeSwitch: function (e) {
     // console.log('chargeHidden1' + chargeHidden)

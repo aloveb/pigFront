@@ -1,6 +1,7 @@
 // pages/tingche/tingche.js
 const app = getApp()
 const RENT_REQUEST = getApp().globalData.RENT_REQUEST
+const RENT_GRAB = getApp().globalData.RENT_GRAB
 Page({
 
   /**
@@ -64,6 +65,22 @@ Page({
       }
     })
 
+  },
+  rent:function(){
+    var that = this;
+    wx.request({
+      url: RENT_GRAB,
+      method: 'GET',
+      success: function (res) {
+        that.setData({
+          parkArea: res.data.result[0].parkArea,
+          parkBuild: res.data.result[0].parkBuild,
+          parkNum: res.data.result[0].parkNum,
+          orderDate: res.data.result[0].orderDate,
+          price: res.data.result[0].price
+        })
+      }
+    })    
   },
 
   /**
