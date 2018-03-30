@@ -78,18 +78,21 @@ Page({
       method:'PUT',
       success: function (res) {
         console.log(res.data);
-
+        var that = this
+        that.setData({
+          modalHidden: true,
+          toast1Hidden: false,
+          notice_str: '提交成功'
+        });
+        wx.navigateTo({
+          url: '../../information/information',
+        })
       }
     })
    // wx.setStorageSync('CARDID', cardId)
    // wx.setStorageSync('PLATEID', plateNum)
-    this.setData({
-      modalHidden: true,
-      toast1Hidden: false,
-      notice_str: '提交成功'
-    });
     wx.navigateTo({
-      url: '../information',
+      url: '../../information/information',
     })
   },
   cancel_one: function (e) {

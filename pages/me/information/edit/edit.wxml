@@ -21,7 +21,7 @@
     <view class="section">    
       <view class="section__title">车牌号</view>  
       <view class='form-group'>  
-        <input type="number" class="input-text" name="plateID" placeholder='{{plateNum}}' />  
+        <input type="text" class="input-text" name="plateID" placeholder='{{plateNum}}' />  
       </view>  
     </view>  
     

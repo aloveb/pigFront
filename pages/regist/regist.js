@@ -99,7 +99,8 @@ Page({
     that.modalTap();
   },
   formReset: function () {
-    console.log('reset happened');
-    this.modalTap2();
+    wx.navigateTo({
+      url: '../home/home'
+    })
   }
 })
