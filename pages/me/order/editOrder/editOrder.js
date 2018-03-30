@@ -8,8 +8,8 @@ var parkBuild
 var parkNum
 var price
 var orderDate
-var check=false
-
+var chargeHidden1 = false
+var chargeHidden2 = true
 Page({
   data: {
     // 
@@ -18,7 +18,8 @@ Page({
     modalHidden: true,
     modalHidden2: true,
     notice_str: '',
-
+    chargeHidden1: false,
+    chargeHidden2: true,
   },
   datePickerBindchange: function (e) {
     this.setData({
@@ -94,11 +95,12 @@ Page({
     parkBuild = e.detail.value.parkBuild;
     parkNum = e.detail.value.parkNum;
     orderDate = e.detail.value.orderDate;
-    console.log("switch:"+check)
-    if(charge){
-      price=0
-    }else{
+    if (chargeHidden2) {
+      console.log("Charge")
       price = e.detail.value.price;
+    } else {
+      price = 0;
+      console.log("No Charge")
     }
     var that = this;
     that.modalTap();
@@ -109,8 +111,17 @@ Page({
     console.log('reset happened');
     this.modalTap2();
   },
-  changeSwitch: function(){
-    check = !check;
-    console.log("check:"+check)
+  changeSwitch: function (e) {
+    // console.log('chargeHidden1' + chargeHidden)
+    //  var chargeHidden
+    chargeHidden1 = !chargeHidden1
+    chargeHidden2 = !chargeHidden2
+    console.log('chargeHidden1:' + chargeHidden1)
+    console.log('chargeHidden2:' + chargeHidden2)
+    this.setData({
+      chargeHidden1: chargeHidden1,
+      chargeHidden2: chargeHidden2
+    })
+    //console.log('chargeHidden2:' + chargeHidden)
   }
 })

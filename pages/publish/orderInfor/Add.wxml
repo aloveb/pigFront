@@ -44,19 +44,23 @@
 
   <view class="section"> 
     <view class="section__title">租出费用</view> 
+    <view class="form-group">
+      <text>免费</text>
+      <switch name="charge" bindchange='changeSwitch' checked='{{check}}'/> 
+    </view> 
   </view>
 
-  <view class="section section_gap">  
-    <view class="section__title">
-      <text>免费</text>
-      <switch name="charge"/> 
-    </view>  
-    <view class='form-group2'>  
+  <view class="section section_gap" hidden="{{chargeHidden1}}">   
+    <view class='section__title'>  
       <input type="number" class="input-text2" name="price" placeholder="5" >
       </input>
-      <text>元</text>
     </view>  
+    <text class='form-group'>元/天</text>
   </view>  
+
+    <view class="section section_gap" hidden="{{chargeHidden2}}">   
+    <text class='form-group'> 0 元/天</text>
+    </view> 
 
   <view class="btn-area">  
     <button formType="submit" class="sub">提交</button> 

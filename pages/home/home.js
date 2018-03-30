@@ -76,7 +76,7 @@ Page({
               console.log("openid：" + openId)
 
               wx.request({
-                url: CHECK_USER + '7',//openId,
+                url: CHECK_USER + openId,
                 success: (res) => {
                   //返回
                   console.log("check2:" + CHECK_USER + openId)
@@ -84,7 +84,7 @@ Page({
                   if (res.data.id == undefined) {
                     //check为null时，直接跳转到页
                     console.log("新用户") 
-                      wx.setStorageSync('OPENID','7')//openId)
+                      wx.setStorageSync('OPENID',openId)
                     console.log('OPENID:' + wx.getStorageSync('OPENID'))
                     wx.navigateTo({
                       url: '../regist/regist'

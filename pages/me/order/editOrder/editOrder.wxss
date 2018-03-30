@@ -61,8 +61,7 @@
     border: 1px solid #ddd;  
 }  
 .input-text2{  
-    border: 1px solid #ddd;
-    width: 80rpx;  
+    border: 1px solid #ddd; 
 }  
 .date{
   color: #aaa;

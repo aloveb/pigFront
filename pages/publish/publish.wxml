@@ -31,11 +31,27 @@
     <view class="orderButton">
       <button bindtap="editOrder" class="button1">
         <image class="spic" src="../images/edit.jpg">编辑</image>
-      </button>
-      <button class="button1">
-        <image bindtap="deleteOrder" class="spic" src="../images/delete.jpg">删除</image>
-      </button>      
+      </button>  
+      <button bindtap="deleteOrder" class="button1">
+       <image class="spic" src="../images/delete.jpg">删除</image></button> 
+       
+          
     </view>
   </view>
   </form>
 </view>
+
+ <!-- 黑框提示并消失 -->  
+    <toast hidden="{{toast1Hidden}}" bindchange="toast1Change">  
+        {{notice_str}}  
+    </toast>  
+    <!-- 确认框 及 提示框 -->  
+    <view class="page__bd">  
+        <modal title="确认" confirm-text="确定" cancel-text="取消" hidden="{{modalHidden}}" mask bindconfirm="confirm_one" bindcancel="cancel_one">  
+            删除后将不能恢复，确认删除？  
+        </modal>  
+        <modal class="modal" hidden="{{modalHidden2}}" no-cancel bindconfirm="modalChange2" bindcancel="modalChange2">  
+            <view> 提示 </view>  
+            <view> 清空成功 </view>  
+        </modal>  
+    </view>  

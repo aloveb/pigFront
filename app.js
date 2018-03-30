@@ -49,6 +49,7 @@ App({
     NOTE_REQUEST: 'https://rooti347933trial.hanatrial.ondemand.com/user/regist/',  //notification信息请求
     PUB_POST: 'https://rooti347933trial.hanatrial.ondemand.com/order/add',  //新订单信息提交
     PUB_EDIT: 'https://rooti347933trial.hanatrial.ondemand.com/order/edit', 
+    ORDER_DELETE: 'https://rooti347933trial.hanatrial.ondemand.com/order/cancleOrder', 
     REGIST: 'https://rooti347933trial.hanatrial.ondemand.com/user/register',  //注册
 
   }
