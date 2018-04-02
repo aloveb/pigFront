@@ -8,19 +8,19 @@
     </block>
   </view>
 
-  <view class="information">
+  <view class="information" bindtap="infor">
     <image class="sspic" src="../images/information.jpg"></image>
-    <text class="stext"  bindtap="infor">\t我的资料</text>
+    <text class="stext">\t我的资料</text>
   </view>
 
-  <view class="purse">
+  <view class="purse" bindtap="pur">
     <image class="sspic" src="../images/information.jpg"></image>
-    <text class="stext" bindtap="pur">\t我的钱包</text>
+    <text class="stext">\t我的钱包</text>
   </view>
 
-  <view class="order">
+  <view class="order" bindtap="ord">
     <image class="sspic" src="../images/information.jpg"></image>
-    <text class="stext" bindtap="ord">\t我的订单</text>
+    <text class="stext">\t我的订单</text>
   </view>
 </view>  
 

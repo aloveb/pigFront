@@ -1,26 +1,27 @@
-const app = getApp()
-const EDIT_SUB = getApp().globalData.EDIT_SUB
+const app = getApp();
+const EDIT_SUB = getApp().globalData.EDIT_SUB;
 
-var cardId = wx.getStorageSync('CARDID')
-var plateNum = wx.getStorageSync('PLATENUM')
-//var cardId
-//var plateNum
-
+var cardId = wx.getStorageSync('CARDID');
+var plateNum = wx.getStorageSync('PLATENUM');
 Page({
   data: {
     toast1Hidden: true,
     modalHidden: true,
     modalHidden2: true,
     notice_str: '',
-    cardId,
-    plateNum
+    cardId: '',
+    plateNum: ''
   },
   //事件处理函数
-  onLoad: function () {
+  onShow: function () {
+    cardId = wx.getStorageSync('CARDID');
+    plateNum = wx.getStorageSync('PLATENUM');
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
-        hasUserInfo: true
+        hasUserInfo: true,
+        cardId,
+        plateNum
       })
     } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
@@ -28,7 +29,9 @@ Page({
       app.userInfoReadyCallback = res => {
         this.setData({
           userInfo: res.userInfo,
-          hasUserInfo: true
+          hasUserInfo: true,
+          cardId,
+          plateNum
         })
       }
     } else {
@@ -38,7 +41,9 @@ Page({
           app.globalData.userInfo = res.userInfo
           this.setData({
             userInfo: res.userInfo,
-            hasUserInfo: true
+            hasUserInfo: true,
+            cardId,
+            plateNum
           })
         }
       })
@@ -62,11 +67,8 @@ Page({
     })
   },
   confirm_one: function (e) {
-    console.log(e);
-    //  wx.setStorageSync('CARDID', e.detail.value.carID)
-    // wx.setStorageSync('PLATEID', e.detail.value.plateID)
-    wx.setStorageSync('CARDID', cardId)
-    wx.setStorageSync('PLATENUM', plateNum)
+    wx.setStorageSync('CARDID', cardId);
+    wx.setStorageSync('PLATENUM', plateNum);
     wx.request({
       url: EDIT_SUB,
       data: {
@@ -76,24 +78,17 @@ Page({
         plateNum,
       },
       method:'PUT',
-      success: function (res) {
-        console.log(res.data);
-        var that = this
-        that.setData({
+      success: (res) => {
+        this.setData({
           modalHidden: true,
           toast1Hidden: false,
           notice_str: '提交成功'
         });
-        wx.navigateTo({
+        wx.navigateBack({
           url: '../../information/information',
         })
       }
-    })
-   // wx.setStorageSync('CARDID', cardId)
-   // wx.setStorageSync('PLATEID', plateNum)
-    wx.navigateTo({
-      url: '../../information/information',
-    })
+    });
   },
   cancel_one: function (e) {
     console.log(e);
@@ -124,7 +119,7 @@ Page({
   formReset: function () {
     //console.log('reset happened');
     //this.modalTap2();
-    wx.navigateTo({
+    wx.navigateBack({
       url: '../information'
     })
   }

@@ -11,7 +11,7 @@ Page({
     plateId: ""
   },  
   //事件处理函数
-  onLoad: function () {
+  onShow: function () {
    let cardId = wx.getStorageSync('CARDID');
    let plateId = wx.getStorageSync('PLATENUM');
     if (app.globalData.userInfo) {
