@@ -33,32 +33,24 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    var that = this;
-    that.setData({
+  onShow: function (options) {
+    this.setData({
       id: wx.getStorageSync('ID')
     })
- //   var id = 1
     wx.request({
       url: ORDER_REQUEST + id,
       method: 'GET',
-
-      success: function (res) {
-        // console.log("return order:"+res.data)
-        item = res.data
-        console.log("resDataItem:"+item[0].orderId)
+      success: (res) => {
         if (res.data == null) {
-          console.log("no data")
+          console.log("no data");
           orderNote = false
         };
-        that.setData({
+        this.setData({
           item: res.data,
         })
-
       }
     })
   },
-
 
   //事件处理函数
   Add: function () {
@@ -82,12 +74,6 @@ Page({
       url: '../notification/notification'
     })
   },
-  editOrder: function () {
-    wx.navigateTo({
-      url: '../me/order/editOrder/editOrder'
-    })
-  },
-
   //删除订单 弹出确认框后提交
   toast1Change: function (e) {
     this.setData({ toast1Hidden: true });
@@ -149,10 +135,14 @@ Page({
       modalHidden2: true
     })
   },
-  deleteOrder: function (e) {
-    var that = this;
-    this.modalTap();
-
+  editOrder: function (event) {
+    let item = event.target.dataset.source;
+    wx.navigateTo({
+      url: '../me/order/editOrder/editOrder?id=' + item.orderId
+    })
   },
-
+  deleteOrder: function (event) {
+    let item = event.target.dataset.source;
+    this.modalTap();
+  }
 })

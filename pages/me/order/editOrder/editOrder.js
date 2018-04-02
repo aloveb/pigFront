@@ -1,6 +1,7 @@
 // pages/me/order/editOrder/editOrder.js
 const app = getApp();
-const PUB_EDIT = getApp().globalData.EDIT
+const PUB_EDIT = getApp().globalData.EDIT;
+const ORDER_DETAIL = getApp().globalData.ORDER;
 var rentId
 var tenatId
 var parkArea
@@ -13,16 +14,27 @@ var chargeHidden2 = true
 Page({
   data: {
     // 
-    dateValue: '2018-03-29',
-    parkArea:'A',
-    parkBuild:'7',
-    parkNum:'123',
+    order: null,
     toast1Hidden: true,
     modalHidden: true,
     modalHidden2: true,
     notice_str: '',
     chargeHidden1: false,
     chargeHidden2: true,
+  },
+  onShow: function () {
+    let id = this.options.id;
+    if(id){
+      wx.request({
+        url: ORDER_DETAIL + id, 
+        method: 'GET',
+        success: (res) => {
+          this.setData({
+            order: res.data
+          });
+        }
+      })
+    }
   },
   datePickerBindchange: function (e) {
     this.setData({
@@ -115,8 +127,8 @@ Page({
 
   },
   formReset: function () {
-    wx.navigateTo({
-      url: '../../../me/order/detail/detail',
+    wx.navigateBack({
+      delta: 1
     })
   },
   changeSwitch: function (e) {

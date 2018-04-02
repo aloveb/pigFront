@@ -1,4 +1,4 @@
-
+<wxs src="../../utils/util.wxs" module="utils" />
 <view class="top">
 
   <view class="rig">
@@ -20,17 +20,17 @@
   <form >
   <view wx:for="{{item}}" wx:key="orderId" class="order">
     <view class="orderInfor" bindtap='detail'> 
-        <view wx:if="{{item.rentId == id}}" class="orderText">{{item.orderDate}}</view>
+        <view wx:if="{{item.rentId == id}}" class="orderText">{{utils.formatTime(item.orderDate)}}</view>
         <view wx:if="{{item.orderState == 1}}" class="orderText">发布中</view>
         <view wx:elif="{{item.orderState == 2}}" class="orderText">租借中</view>
         <view wx:elif="{{item.orderState == 3}}" class="orderText">完成</view>
         <view wx:elif="{{item.orderState == 0}}" class="orderText">已过期</view>
     </view>
     <view class="orderButton">
-      <button bindtap="editOrder" class="button1">
+      <button bindtap="editOrder" data-source="{{item}}" class="button1">
         <image class="spic" src="../images/edit.jpg">编辑</image>
       </button>  
-      <button bindtap="deleteOrder" class="button1">
+      <button bindtap="deleteOrder" data-source="{{item}}" class="button1">
        <image class="spic" src="../images/delete.jpg">删除</image></button> 
               
     </view>
