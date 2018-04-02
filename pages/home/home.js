@@ -6,7 +6,7 @@ const GET_OPENID = getApp().globalData.GET_OPENID
 
 const APP_ID = 'wxcc704198b07ae345';//输入小程序appid  
 const APP_SECRET = '623f8a05e0a330bb9f6dfc21f46943ad';//输入小程序app_secret  
-var openId
+var openId;
 
 Page({
   data: {
@@ -76,7 +76,7 @@ Page({
               console.log("openid：" + openId)
 
               wx.request({
-                url: CHECK_USER + openId,
+                url: CHECK_USER + '111',// openId,
                 success: (res) => {
                   //返回
                   console.log("check2:" + CHECK_USER + openId)
@@ -84,7 +84,7 @@ Page({
                   if (res.data.id == undefined) {
                     //check为null时，直接跳转到页
                     console.log("新用户") 
-                      wx.setStorageSync('OPENID', openId)
+                      wx.setStorageSync('OPENID', '111')//openId)
                     console.log('OPENID:' + wx.getStorageSync('OPENID'))
                     wx.navigateTo({
                       url: '../regist/regist'

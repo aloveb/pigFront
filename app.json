@@ -13,11 +13,12 @@
     "pages/me/information/edit/edit",
     "pages/me/order/order",
     "pages/me/order/editOrder/editOrder",
+    "pages/me/order/detail/detail",
     "pages/me/purse/purse"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F49B60",
+    "navigationBarBackgroundColor": "#339999",
     "navigationBarTitleText": "小猪配停",
     "navigationBarTextStyle": "black"
   }

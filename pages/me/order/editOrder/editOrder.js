@@ -116,7 +116,7 @@ Page({
   },
   formReset: function () {
     wx.navigateTo({
-      url: '../../../publish/publish',
+      url: '../../../me/order/detail/detail',
     })
   },
   changeSwitch: function (e) {

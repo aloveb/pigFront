@@ -1,0 +1,63 @@
+<view id="detail">
+
+  <view class="top">
+    <view class="rig">
+    <image bindtap="note" class="spic" src="../../../images/note.jpg" background-size="cover"></image>
+    </view>
+  <view class="addtext">订单详情</view>
+    <view class="lef">
+      <image bindtap="me" class="spic" src="../../../images/me.jpg" background-size="cover"></image>
+    </view>
+  </view>
+
+<form bindsubmit='formSubmit' bindreset='formReset'>
+
+  <view class="section">  
+    <view class="section__title">区域:</view>  
+    <view class='form-group'>  
+      <text class="input-text">{{parkArea}}</text>
+    </view>    
+  </view>  
+
+  <view class="section">   
+    <view class="section__title">楼号:</view>  
+    <view class='form-group'>  
+      <text class="input-text">{{parkBuild}}</text> 
+    </view> 
+  </view>   
+
+  <view class="section">    
+    <view class="section__title">车位号:</view>  
+    <view class='form-group'>  
+      <text class="input-text">{{parkNum}}</text>>  
+    </view> 
+  </view>  
+
+  <view class="section"> 
+    <view class="section__title">租出时间:</view>  
+    <view class="picker">
+      <text class="input-text">{{orderDate}}</text>
+    </view>
+  </view>
+
+  <view class="section"> 
+    <view class="section__title">租出费用:</view> 
+    <view class="form-group">
+      <text class="input-text">{{price}} 元/天</text> 
+    </view> 
+  </view>
+
+  <view class="section"> 
+    <view class="section__title">订单状态:</view> 
+    <view class="form-group">
+      <text class="input-text">{{orderStatus}}</text> 
+    </view> 
+  </view>
+
+  <view class="btn-area">  
+    <button bindtap="edit" class="sub">编辑</button> 
+    <button bindtap="delete" class="res">删除</button> 
+  </view> 
+</form>
+
+</view>

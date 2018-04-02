@@ -5,6 +5,7 @@ const ORDER_REQUEST = getApp().globalData.ORDER_REQUEST
 const ORDER_DELETE = getApp().globalData.ORDER_DELETE
 var id = wx.getStorageSync('ID')
 var orderNote 
+var item
 Page({
 
   data: {
@@ -15,6 +16,7 @@ Page({
     modalHidden2: true,
     notice_str: '',
     item: [{
+      orderId:'',
       rentId: '',
       tenamtId: '',
       parkArea: '',
@@ -24,8 +26,7 @@ Page({
       confirmDate: '',
       orderDate: '',
       price: '',
-      orderState: '',
-      oederId: ''
+      orderState: ''
     }]
   },
 
@@ -44,25 +45,14 @@ Page({
 
       success: function (res) {
         // console.log("return order:"+res.data)
-        if (res.data === null) {
+        item = res.data
+        console.log("resDataItem:"+item[0].orderId)
+        if (res.data == null) {
           console.log("no data")
           orderNote = false
         };
-
         that.setData({
           item: res.data,
-          /*
-          [rentId]: res.data.rentId,
-          [tenamtId]: res.data.tenamtId,
-          [parkArea]: res.data.parkArea,
-          [parkBuild]: res.data.parkBuild,
-          [parkNum]: res.data.parkNum,
-          [releaseDate]: res.data.item.releaseDate,
-          [confirmDate]: res.data.confirmDate,
-          [orderDate]: res.data.orderDate,
-          [price]: res.data.price,
-          [orderState]: res.data.orderState,
-          [oederId]: res.data.oederId   */
         })
 
       }
@@ -74,6 +64,12 @@ Page({
   Add: function () {
     wx.navigateTo({
       url: '../publish/orderInfor/Add'
+    })
+  },
+  detail: function () {
+    console.log("orderIdTrans:"+item[0].orderId)
+    wx.navigateTo({
+      url: '../me/order/detail/detail'
     })
   },
   me: function () {
@@ -108,7 +104,7 @@ Page({
     wx.request({
       url: ORDER_DELETE,
       data:({
-        orderId: 20,
+        orderId: orderId,
       }),
       success: (res) => {
         console.log(res.data);

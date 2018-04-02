@@ -3,7 +3,7 @@ const app = getApp()
 const ORDER_REQUEST = getApp().globalData.ORDER_REQUEST
 const ORDER_DELETE = getApp().globalData.ORDER_DELETE
 var id = wx.getStorageSync('ID')
-
+var item
 //var orderNote 
 
 Page({
@@ -31,6 +31,12 @@ Page({
       orderState:'',
       oederId: ''
     }]  
+  },
+  detail: function () {
+  //  console.log("orderIdTrans:" + item[0].orderId)
+    wx.navigateTo({
+      url: '../../me/order/detail/detail'
+    })
   },
 
   /**
