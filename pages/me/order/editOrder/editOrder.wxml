@@ -11,7 +11,9 @@
   <view class="section">  
     <view class="section__title">区域</view>  
     <view class='form-group'>  
+
       <input type="text" class="input-text" name="parkArea" value="{{order.parkArea}}" />   
+
     </view>    
   </view>  
 

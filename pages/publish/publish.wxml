@@ -1,3 +1,4 @@
+
 <view class="top">
 
   <view class="addtext">发布车位</view>
@@ -15,12 +16,12 @@
 
     <view wx:if="{{item.rentId == id}}"class="orderInfor" bindtap='detail' data-index="{{item.orderId}}" > 
         <view class="orderText">{{item.orderDate}}</view>
+
         <view wx:if="{{item.orderState == 1}}" class="orderText">发布中</view>
         <view wx:elif="{{item.orderState == 2}}" class="orderText">已完成</view>
         <view wx:elif="{{item.orderState == 3}}" class="orderText">已完成</view>
         <view wx:elif="{{item.orderState === 0}}" class="orderText">已失效</view>
     </view>
-
 
       <view wx:if="{{item.orderState == 1}}" class="orderButton">
 

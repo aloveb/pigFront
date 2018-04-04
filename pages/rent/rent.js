@@ -11,6 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+
     toast1Hidden: true,
     modalHidden: true,
     modalHidden2: true,
@@ -28,11 +29,13 @@ Page({
       price: '',
       orderState: ''
     }]
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
+
   onShow: function (options) {
     //checkId
     var openId = wx.getStorageSync('OPENID')
@@ -60,6 +63,7 @@ Page({
 
 
     //load页面
+
     var that = this;
     id = wx.getStorageSync('ID')
     console.log("rentId:"+id)
@@ -95,11 +99,13 @@ Page({
   toast1Change: function (e) {
     this.setData({ toast1Hidden: true });
   },
+
   //弹出确认框
   modalTap: function (e) {
     this.setData({
       modalHidden: false
     })
+
   },
   confirm_one: function (event) {
     // var formData = e.detail.value;
@@ -118,18 +124,28 @@ Page({
       method: 'PUT',
       success: (res) => {
         console.log(res.data);
-        this.setData({
-          modalHidden: true,
-          toast1Hidden: false,
-          notice_str: '租订成功'
-        });
-        setTimeout(function () {
-          wx.navigateTo({
-            url: '../me/order/detail/detail?id='+orderId,
-          })
-        }, 1000
-        ) 
+        if(!res.data.tenantId){
+          this.setData({
+            modalHidden: true,
+            toast1Hidden: false,
+            notice_str: '余额不足'
+          });
+        }else{
+        
+          this.setData({
+            modalHidden: true,
+            toast1Hidden: false,
+            notice_str: '租订成功'
+          });
+          setTimeout(function () {
+            wx.navigateTo({
+              url: '../me/order/detail/detail?id='+orderId,
+            })
+          }, 1000
+          )
+        }
       },
+      
       //没有正常弹出
       fail: function () {
         console.log(res.data);

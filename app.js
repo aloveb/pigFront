@@ -47,6 +47,7 @@ App({
     PURSE_REQUEST: 'https://rooti347933trial.hanatrial.ondemand.com/user/purse?id=',  //钱包余额
   //  INFOR_REQUEST: 'https://rooti347933trial.hanatrial.ondemand.com/user/regist/',  //查看用户信息
     NOTE_REQUEST: 'https://rooti347933trial.hanatrial.ondemand.com/user/note',  //notification信息请求
+    ORDER: 'https://rooti347933trial.hanatrial.ondemand.com/order/', 
     PUB_POST: 'https://rooti347933trial.hanatrial.ondemand.com/order/add',  //新订单信息提交
     PUB_EDIT: 'https://rooti347933trial.hanatrial.ondemand.com/order/edit', 
     ORDER: 'https://rooti347933trial.hanatrial.ondemand.com/order/', 

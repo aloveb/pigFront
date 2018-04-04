@@ -36,6 +36,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onShow: function (options) {
+
    //checkId
     var openId = wx.getStorageSync('OPENID')
     wx.request({
@@ -66,11 +67,12 @@ Page({
     id = wx.getStorageSync('ID')
     that.setData({
       id: id
+
     })
- //   var id = 1
     wx.request({
       url: ORDER_REQUEST + id,
       method: 'GET',
+
 
       success: function (res) {
         // console.log("return order:"+res.data)
@@ -88,10 +90,10 @@ Page({
           })
         }
 
+
       }
     })
   },
-
 
   //事件处理函数
   Add: function () {
@@ -115,6 +117,7 @@ Page({
       url: '../notification/notification'
     })
   },
+
 
   //删除订单 弹出确认框后提交
   toast1Change: function (e) {
@@ -191,6 +194,7 @@ Page({
   },
   deleteOrder: function (event) {
     let item = event.target.dataset.source;
+
     wx.setStorageSync('ORDERID', item.orderId)
     this.modalTap();
   }

@@ -84,7 +84,7 @@ Page({
                   if (res.data.id == undefined) {
                     //check为null时，直接跳转到页
                     console.log("新用户") 
-                      wx.setStorageSync('OPENID',openId)
+                      wx.setStorageSync('OPENID', openId)
                     console.log('OPENID:' + wx.getStorageSync('OPENID'))
                     wx.navigateTo({
                       url: '../regist/regist'

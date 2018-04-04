@@ -1,6 +1,8 @@
 // pages/me/order/editOrder/editOrder.js
 const app = getApp();
+
 const PUB_EDIT = getApp().globalData.PUB_EDIT
+
 const ORDER_DETAIL = getApp().globalData.ORDER;
 var rentId
 var tenatId
@@ -14,7 +16,6 @@ var chargeHidden2 = true
 var orderD
 Page({
   data: {
-
     toast1Hidden: true,
     modalHidden: true,
     modalHidden2: true,
@@ -24,6 +25,7 @@ Page({
   },
   onShow: function () {
     let id = this.options.id;
+
     var that = this
     if (id) {
       wx.request({
@@ -43,6 +45,7 @@ Page({
            
           })
           console.log(orderD);
+
         }
       })
     }
