@@ -14,6 +14,7 @@ var orderDate
 var chargeHidden1 = false
 var chargeHidden2 = true
 var orderD
+var dateValueC
 Page({
   data: {
     toast1Hidden: true,
@@ -36,7 +37,8 @@ Page({
           var dateValue = res.data.orderDate.substring(0,10)
           this.setData({
             order: res.data,
-            dateValue:dateValue
+            dateValue:dateValue,
+            dateValueC: dateValue
           });
           orderD = res.data
           console.log(orderD)
@@ -113,7 +115,8 @@ Page({
   //弹出提示框  
   modalTap2: function (e) {
     this.setData({
-      modalHidden2: false
+      modalHidden2: false,
+      dateValue: dateValueC
     })
   },
   modalChange2: function (e) {

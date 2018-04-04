@@ -58,9 +58,11 @@
 }
 .input-text{  
     border: 1px solid #ddd;  
+    background-color: white;
 }  
 .input-text2{  
     border: 1px solid #ddd;
+    background-color: white;
  
 }  
 .date{

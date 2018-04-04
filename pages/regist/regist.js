@@ -45,7 +45,7 @@ Page({
             notice_str: '注册成功'
           });
           setTimeout(function () {
-            wx.redirectTo({
+            wx.navigateTo({
               url: '../home/home'
             })
           }, 2000

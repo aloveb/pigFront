@@ -5,9 +5,15 @@
   border-radius: 10rpx;
 }
 .spic {
-  width: 68rpx;
-  height: 68rpx;
-  margin: 5rpx;
+  width: 58rpx;
+  height: 58rpx;
+  margin: 25rpx 25rpx 0rpx 0rpx;
+  border-radius: 20rpx;
+}
+.spic1 {
+  width: 58rpx;
+  height: 58rpx;
+  margin: 0rpx 25rpx 0rpx 0rpx;
   border-radius: 20rpx;
 }
 .top{
@@ -19,15 +25,30 @@
 
 .Add{
   height: 100%;
+  width: 95%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 1rpx 0;
+  margin: 20rpx 40rpx 40rpx 20rpx;
+  border-radius: 10rpx;
   box-sizing: border-box;
 }
 
-.order{
+.order1{
+  height: 100%;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20rpx 40rpx 40rpx 40rpx;
+  box-sizing: border-box;
+  background-color: white;
+  color: #7F6F6F;
+  border-radius: 10rpx;
+}
+.order2{
   height: 100%;
   width: 90%;
   display: flex;
@@ -45,7 +66,7 @@
 }
 
 .button1{
-  background-color: #F7F6F6;
+  background-color: white;
 }
 
 button::after{
@@ -55,7 +76,15 @@ button::after{
   display: flex;
   flex-direction: column;
   align-items: left;
-  margin: 10rpx;
+  margin: 10rpx 10rpx 40rpx 30rpx;
+  font-size: 40rpx;
+  font-weight: 400;
+}
+.orderText1{
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin: 40rpx 10rpx 10rpx 30rpx;
   font-size: 40rpx;
   font-weight: 400;
 }

@@ -1,4 +1,5 @@
 // pages/publish/orderInfor/Add.js
+var util = require('../../../utils/util.js'); 
 const app = getApp();
 const PUB_POST = getApp().globalData.PUB_POST
 var rentId = wx.getStorageSync('ID')
@@ -6,15 +7,16 @@ var tenatId
 var parkArea
 var parkBuild
 var parkNum
-var price 
+var price
 var orderDate
 var chargeHidden1=false
 var chargeHidden2 = true
+var dateValueC
 
 Page({
   data: {
     // 
-    dateValue: '2018-03-29',
+   // dateValue: '2018-03-29',
     toast1Hidden: true,
     modalHidden: true,
     modalHidden2: true,
@@ -23,6 +25,18 @@ Page({
     chargeHidden2: true,
 
   },
+
+  onShow: function () {
+    // 调用函数时，传入new Date()参数，返回值是日期和时间 
+    var dateValue 
+    dateValueC = util.formatTime(new Date());
+    dateValueC = dateValueC.substring(0,10)
+    // 再通过setData更改Page()里面的data，动态更新页面的数据  
+    this.setData({
+      dateValue: dateValueC
+    });
+  },  
+
   datePickerBindchange: function (e) {
     this.setData({
       dateValue: e.detail.value
@@ -85,8 +99,10 @@ Page({
   },
   //弹出提示框  
   modalTap2: function (e) {
+
     this.setData({
-      modalHidden2: false
+      modalHidden2: false,
+      dateValue:dateValueC
     })
   },
   modalChange2: function (e) {
@@ -102,7 +118,11 @@ Page({
     orderDate = e.detail.value.orderDate;
     if(chargeHidden2){
       console.log("Charge")
+      if (e.detail.value.price){
       price = e.detail.value.price;
+      }else{
+      price = 5
+      }
     }else{
       price = 0;
       console.log("No Charge")

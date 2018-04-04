@@ -31,18 +31,6 @@
         </view>
     </view>
 
-    <view wx:if="{{item.orderState == 1}}">
-
-      <view class="orderButton">
-        <button bindtap="editOrder" data-source="{{item}}" class="button1">
-          <image class="spic" src="../../images/edit.jpg">编辑</image>
-        </button>  
-        <button bindtap="deleteOrder" data-source="{{item}}" class="button1">
-        <image class="spic" src="../../images/delete.jpg">删除</image></button> 
-                
-      </view>
-    
-    </view>
   </view>
   </form>
 </view>

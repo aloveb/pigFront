@@ -1,8 +1,8 @@
 /**home.wxss**/
 .pic {
-  width: 458rpx;
-  height: 388rpx;
-  margin: 40rpx;
+  width: 618rpx;
+  height: 488rpx;
+  margin: 20rpx;
 }
 
 .text {

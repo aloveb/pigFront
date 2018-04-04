@@ -28,7 +28,7 @@ Page({
    */
 
   
-  onLoad: function (options) {
+  onShow: function (options) {
    
     var that = this;
     wx.request({
@@ -36,11 +36,7 @@ Page({
       method: 'GET',
       success: function (res) {
         that.setData({
-          parkArea: res.data.result[0].parkArea,
-          parkBuild: res.data.result[0].parkBuild,
-          parkNum: res.data.result[0].parkNum,
-          orderDate: res.data.result[0].orderDate,
-          orderType: res.data.result[0].orderType
+          item:res.data
         })
       }
     })
