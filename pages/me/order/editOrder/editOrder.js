@@ -1,6 +1,7 @@
 // pages/me/order/editOrder/editOrder.js
 const app = getApp();
-const PUB_EDIT = getApp().globalData.EDIT
+const PUB_EDIT = getApp().globalData.PUB_EDIT
+const ORDER_DETAIL = getApp().globalData.ORDER;
 var rentId
 var tenatId
 var parkArea
@@ -10,19 +11,41 @@ var price
 var orderDate
 var chargeHidden1 = false
 var chargeHidden2 = true
+var orderD
 Page({
   data: {
-    // 
-    dateValue: '2018-03-29',
-    parkArea:'A',
-    parkBuild:'7',
-    parkNum:'123',
+
     toast1Hidden: true,
     modalHidden: true,
     modalHidden2: true,
     notice_str: '',
     chargeHidden1: false,
     chargeHidden2: true,
+  },
+  onShow: function () {
+    let id = this.options.id;
+    var that = this
+    if (id) {
+      wx.request({
+        url: ORDER_DETAIL + id,
+        method: 'GET',
+        success: (res) => {
+          console.log(res.data)
+          var dateValue = res.data.orderDate.substring(0,10)
+          this.setData({
+            order: res.data,
+            dateValue:dateValue
+          });
+          orderD = res.data
+          console.log(orderD)
+          that.setData({
+            orderD:orderD,
+           
+          })
+          console.log(orderD);
+        }
+      })
+    }
   },
   datePickerBindchange: function (e) {
     this.setData({
@@ -40,42 +63,41 @@ Page({
   },
   confirm_one: function (e) {
     console.log(e);
+    let id = this.options.id;
     // var formData = e.detail.value;
+    console.log(orderD.rentId)
     wx.request({
       url: PUB_EDIT,
-      dataType: 'json',
-      data: JSON.stringify({
+      data:({
 
-        rentId: 1,
+        rentId: orderD.rentId,
         tenatId: null,
         parkArea,
         parkBuild,
         parkNum,
         price,
-        releaseDate:'',
-        confirmDate:'',
+        releaseDate: orderD.releaseDate,
+        confirmDate: orderD.confirmDate,
         orderDate,
-        orderState:2,
-        orderId:2
+        orderState: orderD.orderState,
+        orderId: id
 
       }),
+      method:'PUT',
       success: (res) => {
-        console.log('editOrderRes:'+res.data);
+        console.log(res.data);
         this.setData({
           modalHidden: true,
           toast1Hidden: false,
           notice_str: '提交成功'
         });
+        setTimeout(function () {
+          wx.navigateBack()   
+        }, 1000
+        ) 
       }
     })
-    this.setData({
-      modalHidden: true,
-      toast1Hidden: false,
-      notice_str: '提交成功'
-    });
-    wx.navigateTo({
-      url: '../../../publish/publish',
-    })
+
   },
   cancel_one: function (e) {
     console.log(e);
@@ -102,21 +124,16 @@ Page({
     parkBuild = e.detail.value.parkBuild;
     parkNum = e.detail.value.parkNum;
     orderDate = e.detail.value.orderDate;
-    if (chargeHidden2) {
-      console.log("Charge")
-      price = e.detail.value.price;
-    } else {
-      price = 0;
-      console.log("No Charge")
-    }
+    price = e.detail.value.price;
+
     var that = this;
     that.modalTap();
 
 
   },
   formReset: function () {
-    wx.navigateTo({
-      url: '../../../me/order/detail/detail',
+    wx.navigateBack({
+      delta: 1
     })
   },
   changeSwitch: function (e) {

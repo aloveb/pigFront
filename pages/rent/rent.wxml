@@ -1,28 +1,41 @@
 <!--pages/tingche/tingche.wxml-->
 <view class="top">
-  <view class="rig">
-  <image bindtap="note" class="spic" src="../images/note.jpg" background-size="cover"></image>
-  </view>
+  
 <view class="addtext">抢车位</view>
-  <view class="lef">
-    <image bindtap="me" class="spic" src="../images/me.jpg" background-size="cover"></image>
-  </view>
+ 
 </view>
 
 <!--订单信息-->
 <view>
   <form >
-  <view wx:for="{{item}}" class="order">
-    <view class="orderInfor">
-        <view class="orderText">车位地址：{{item.parkArea}}-{{item.parkBuild}}-{{item.parkNum}}</view> 
+  <view wx:for="{{item}}" wx:key="{{orderId}}" class="order">
+  
+    <view wx:if="{{item.orderState == 1}}"class="orderInfor">
+
+        <view class="orderText">车位地址：{{item.parkArea}}-{{item.parkBuild}}</view> 
         <view class="orderText">租出时间：{{item.orderDate}}</view>
         <view class="orderText">价格：{{item.price}} 猪猪币</view>
     </view>
-    <view class="orderButton">
-      <button class="button1">
-        <image bindtap="rent" class="picRent" src="../images/me.jpg"></image>
+
+    <view wx:if="{{item.orderState == 1}}" class="orderButton">
+      <button class="button1" bindtap="rent" data-source="{{item}}">
+        <image class="picRent" src="../images/grab.jpg"></image>
       </button>
     </view>
+
+ 
   </view>
   </form>
 </view>
+
+ <!-- 黑框提示并消失 -->  
+    <toast hidden="{{toast1Hidden}}" bindchange="toast1Change">  
+        {{notice_str}}  
+    </toast>  
+    <!-- 确认框 及 提示框 -->  
+    <view class="page__bd">  
+        <modal title="确认" confirm-text="确定" cancel-text="取消" hidden="{{modalHidden}}" mask bindconfirm="confirm_one" bindcancel="cancel_one">  
+            租订后将不能取消，确认租订？  
+        </modal>  
+ 
+    </view>  

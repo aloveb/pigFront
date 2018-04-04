@@ -41,8 +41,9 @@ Page({
     console.log(e);
    // var formData = e.detail.value;
     var that=this
+    rentId=wx.getStorageSync('ID')
     that.setData({
-      rentId: wx.getStorageSync('ID')
+      rentId: rentId
     })
     wx.request({
       url: PUB_POST,

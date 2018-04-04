@@ -1,13 +1,9 @@
 <view id="Add">
 
   <view class="top">
-    <view class="rig">
-    <image bindtap="note" class="spic" src="../../../images/note.jpg" background-size="cover"></image>
-    </view>
+
   <view class="addtext">编辑订单</view>
-    <view class="lef">
-      <image bindtap="me" class="spic" src="../../../images/me.jpg" background-size="cover"></image>
-    </view>
+ 
   </view>
 
 <form bindsubmit='formSubmit' bindreset='formReset'>
@@ -15,57 +11,85 @@
   <view class="section">  
     <view class="section__title">区域</view>  
     <view class='form-group'>  
-      <input type="text" class="input-text" name="parkArea" placeholder="{{parkArea}}" />  
+      <input type="text" class="input-text" name="parkArea" value="{{order.parkArea}}" />   
     </view>    
   </view>  
 
   <view class="section">   
     <view class="section__title">楼号</view>  
     <view class='form-group'>  
-      <input type="number" class="input-text" name="parkBuild" placeholder="{{parkBuild}}" />  
+      <input type="number" class="input-text" name="parkBuild" value="{{order.parkBuild}}" />  
     </view> 
   </view>   
 
   <view class="section">    
     <view class="section__title">车位号</view>  
     <view class='form-group'>  
-      <input type="number" class="input-text" name="parkNum" placeholder="{{parkNum}}" />  
+      <input type="number" class="input-text" name="parkNum" value="{{order.parkNum}}" />  
     </view> 
   </view>  
 
   <view class="section"> 
     <view class="section__title">租出时间段</view>  
-    <view class="picker">
+    <view class="form-group">
       <picker mode="date" value="{{dateValue}}" start="2018-03-01" end="2018-12-31" bindchange="datePickerBindchange" class="date" name="orderDate">
-    	{{dateValue}}
+      {{dateValue}}
       </picker>
     </view>
   </view>
 
-  <view class="section"> 
-    <view class="section__title">租出费用</view> 
-    <view class="form-group">
-      <text>免费</text>
-      <switch name="charge" bindchange='changeSwitch' checked='{{check}}'/> 
-    </view> 
+  <view wx:if="{{order.price != 0}}" >
+
+    <view class="section"> 
+      <view class="section__title">租出费用</view> 
+      <view class="form-group">
+        <text>免费</text>
+        <switch name="charge" bindchange='changeSwitch' checked='{{check}}'/> 
+      </view> 
+    </view>
+
+    <view class="section section_gap" hidden="{{chargeHidden1}}">   
+      <view class='section__title'>  
+        <input type="number" class="input-text2" name="price" placeholder="{{order.price}}" >
+        </input>
+      </view>  
+      <text class='form-group'>元/天</text>
+    </view>  
+
+      <view class="section section_gap" hidden="{{chargeHidden2}}">   
+      <text class='form-group'> 0 元/天</text>
+      </view> 
   </view>
 
-  <view class="section section_gap" hidden="{{chargeHidden1}}">   
-    <view class='section__title'>  
-      <input type="number" class="input-text2" name="price" placeholder="5" >
-      </input>
-    </view>  
-    <text class='form-group'>元/天</text>
-  </view>  
+    <view wx:if="{{order.price == 0}}" >
 
-    <view class="section section_gap" hidden="{{chargeHidden2}}">   
-    <text class='form-group'> 0 元/天</text>
+    <view class="section"> 
+      <view class="section__title">租出费用</view> 
+      <view class="form-group">
+        <text>免费</text>
+        <switch name="charge" bindchange='changeSwitch' checked='{{!check}}'/> 
+      </view> 
+    </view>
+
+    <view class="section section_gap" hidden="{{!chargeHidden1}}">   
+      <view class='section__title'>  
+        <input type="number" class="input-text2" name="price" placeholder="{{order.price}}" >
+        </input>
+      </view>  
+      <text class='form-group'>元/天</text>
+    </view>  
+
+      <view class="section section_gap" hidden="{{!chargeHidden2}}">   
+      <text class='form-group'> 0 元/天</text>
+      </view> 
+  </view>
+
+    <view class="btn-area">  
+      <button formType="submit" class="sub">提交</button> 
+      <button formType="reset" class="res">取消</button> 
     </view> 
- 
-  <view class="btn-area">  
-    <button formType="submit" class="sub">提交</button> 
-    <button formType="reset" class="res">取消</button> 
-  </view> 
+
+
 </form>
 
  <!-- 黑框提示并消失 -->  

@@ -12,11 +12,11 @@
 }
 .top{
   display:flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20rpx;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:center;
 }
+
 .Add{
   height: 100%;
   display: flex;
@@ -38,6 +38,7 @@
   box-sizing: border-box;
   background-color: #F7F6F6;
   color: #7F6F6F;
+  border-radius: 10rpx;
 }
 .orderInfor{
   width: 80%;
@@ -55,6 +56,6 @@ button::after{
   flex-direction: column;
   align-items: left;
   margin: 10rpx;
-  font-size: 30rpx;
+  font-size: 40rpx;
   font-weight: 400;
 }

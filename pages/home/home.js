@@ -13,7 +13,7 @@ Page({
     openId,
   },
   
-  onLoad: function () {
+  onShow: function () {
 
     //授权
     if (app.globalData.userInfo) {
@@ -76,7 +76,7 @@ Page({
               console.log("openid：" + openId)
 
               wx.request({
-                url: CHECK_USER + '111',// openId,
+                url: CHECK_USER + openId,
                 success: (res) => {
                   //返回
                   console.log("check2:" + CHECK_USER + openId)
@@ -84,7 +84,7 @@ Page({
                   if (res.data.id == undefined) {
                     //check为null时，直接跳转到页
                     console.log("新用户") 
-                      wx.setStorageSync('OPENID', '111')//openId)
+                      wx.setStorageSync('OPENID',openId)
                     console.log('OPENID:' + wx.getStorageSync('OPENID'))
                     wx.navigateTo({
                       url: '../regist/regist'
@@ -127,7 +127,7 @@ Page({
   me: function () {
     wx.navigateTo({
       url: '../me/me'
-    })
+    })    
   },
   note: function () {
     wx.navigateTo({
@@ -142,7 +142,7 @@ Page({
   bindViewTap2: function () {
     wx.navigateTo({
       url: '../rent/rent'
-    })
+    })     
   },
   getUserInfo: function (e) {
     console.log(e)

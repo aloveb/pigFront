@@ -1,9 +1,9 @@
 /**home.wxss**/
 .pic {
-  width: 358rpx;
-  height: 358rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+  width: 458rpx;
+  height: 388rpx;
+  margin: 40rpx;
+
 }
 
 .text {

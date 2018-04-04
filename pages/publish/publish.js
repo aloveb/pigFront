@@ -3,14 +3,16 @@
 const app = getApp()
 const ORDER_REQUEST = getApp().globalData.ORDER_REQUEST
 const ORDER_DELETE = getApp().globalData.ORDER_DELETE
-var id = wx.getStorageSync('ID')
+const CHECK_USER = getApp().globalData.CHECK_USER
+var id
 var orderNote 
 var item
+var orderId
 Page({
 
   data: {
 
-    orderNote: true,
+    orderNote: false,
     toast1Hidden: true,
     modalHidden: true,
     modalHidden2: true,
@@ -33,10 +35,37 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onShow: function (options) {
+   //checkId
+    var openId = wx.getStorageSync('OPENID')
+    wx.request({
+      url: CHECK_USER + openId,
+      success: (res) => {
+        //返回
+        console.log("check2:" + CHECK_USER + openId)
+
+        if (res.data.id == undefined) {
+          //check为null时，直接跳转到页
+          console.log("新用户")
+          wx.setStorageSync('OPENID', openId)
+          console.log('OPENID:' + wx.getStorageSync('OPENID'))
+          wx.navigateTo({
+            url: '../regist/regist'
+          })
+        }
+        else {
+          //check为false时提示用户是否进行注册，跳转到注册页面
+          console.log("已注册rent id:" + res.data.id)
+        }
+      }
+    })
+
+
+  //load页面
     var that = this;
+    id = wx.getStorageSync('ID')
     that.setData({
-      id: wx.getStorageSync('ID')
+      id: id
     })
  //   var id = 1
     wx.request({
@@ -46,14 +75,18 @@ Page({
       success: function (res) {
         // console.log("return order:"+res.data)
         item = res.data
-        console.log("resDataItem:"+item[0].orderId)
-        if (res.data == null) {
-          console.log("no data")
-          orderNote = false
-        };
-        that.setData({
-          item: res.data,
-        })
+        for (var k in item) {
+          item[k].orderDate = item[k].orderDate.substring(0, 10)
+        }
+        //console.log("resDataItem:"+item[0].orderId)
+        if (res.data) {
+          console.log("have order")
+          orderNote = true
+          that.setData({
+            item: res.data,
+            orderNote:orderNote,
+          })
+        }
 
       }
     })
@@ -66,10 +99,10 @@ Page({
       url: '../publish/orderInfor/Add'
     })
   },
-  detail: function () {
-    console.log("orderIdTrans:"+item[0].orderId)
+  detail: function (e) {
+    //let item = event.target.dataset.source;
     wx.navigateTo({
-      url: '../me/order/detail/detail'
+      url: '../me/order/detail/detail?id=' + e.currentTarget.dataset.index
     })
   },
   me: function () {
@@ -80,11 +113,6 @@ Page({
   note: function () {
     wx.navigateTo({
       url: '../notification/notification'
-    })
-  },
-  editOrder: function () {
-    wx.navigateTo({
-      url: '../me/order/editOrder/editOrder'
     })
   },
 
@@ -98,14 +126,20 @@ Page({
       modalHidden: false
     })
   },
-  confirm_one: function (e) {
-    console.log(e);
+  confirm_one: function (event) {
     // var formData = e.detail.value;
+    var orderId
+    orderId = wx.getStorageSync('ORDERID')
+    console.log('deleteId:'+orderId)
     wx.request({
       url: ORDER_DELETE,
+      header: {
+          'content-type': 'application/x-www-form-urlencoded '
+      }, 
       data:({
-        orderId: orderId,
+        orderId,
       }),
+      method:'PUT',
       success: (res) => {
         console.log(res.data);
         this.setData({
@@ -149,10 +183,16 @@ Page({
       modalHidden2: true
     })
   },
-  deleteOrder: function (e) {
-    var that = this;
-    this.modalTap();
-
+  editOrder: function (event) {
+    let item = event.target.dataset.source;
+    wx.navigateTo({
+      url: '../me/order/editOrder/editOrder?id=' + item.orderId
+    })
   },
+  deleteOrder: function (event) {
+    let item = event.target.dataset.source;
+    wx.setStorageSync('ORDERID', item.orderId)
+    this.modalTap();
+  }
 
 })

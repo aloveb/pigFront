@@ -1,10 +1,11 @@
+
 .top{
   display:flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10rpx;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:center;
 }
+
 .spic {
   width: 68rpx;
   height: 68rpx;

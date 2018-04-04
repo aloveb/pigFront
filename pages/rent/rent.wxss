@@ -1,4 +1,11 @@
 /* pages/tingche/tingche.wxss */
+.top{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
 .order{
   height: 100%;
   width: 90%;
@@ -10,9 +17,11 @@
   box-sizing: border-box;
   background-color: #F7F6F6;
   color: #7F6F6F;
+  border-radius: 20rpx;
 }
 .orderInfor{
-  width: 60%;
+  width: 70%;
+  
 }
 
 .button1{
@@ -30,8 +39,8 @@ button::after{
 }
 
 .picRent {
-  width: 100rpx;
-  height: 100rpx;
-  margin: 40rpx;
+  width: 180rpx;
+  height: 180rpx;
+  margin: 50rpx 0rpx 0rpx 0rpx ;
   border-radius: 10rpx;
 }

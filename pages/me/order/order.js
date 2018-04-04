@@ -2,7 +2,7 @@
 const app = getApp()
 const ORDER_REQUEST = getApp().globalData.ORDER_REQUEST
 const ORDER_DELETE = getApp().globalData.ORDER_DELETE
-var id = wx.getStorageSync('ID')
+var idI = wx.getStorageSync('ID')
 var item
 //var orderNote 
 
@@ -32,27 +32,33 @@ Page({
       oederId: ''
     }]  
   },
-  detail: function () {
-  //  console.log("orderIdTrans:" + item[0].orderId)
+  detail: function (e) {
+    //let item = event.target.dataset.source;
     wx.navigateTo({
-      url: '../../me/order/detail/detail'
+      url: '../order/detail/detail?id=' + e.currentTarget.dataset.index
     })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onShow: function (options) {
     var that = this;
+    idI = wx.getStorageSync('ID')
     that.setData({
-      id: wx.getStorageSync('ID')
+      idI: idI,
     })
+    console.log("orderIdRe"+idI)
    // var id=1
     wx.request({
-      url: ORDER_REQUEST+id,
+      url: ORDER_REQUEST+idI,
       method: 'GET',
     
       success: function (res) {
+        item = res.data
+        for (var k in item) {
+          item[k].orderDate = item[k].orderDate.substring(0, 10)
+        }
        // console.log("return order:"+res.data)
         if (res.data===null){
           console.log("no data")
@@ -62,7 +68,7 @@ Page({
         
         } else {
           that.setData({
-            item:res.data,
+            item:item,
       /*
           rentId: res.data.rentId,
           tenamtId: res.data.tenamtId,
@@ -82,11 +88,7 @@ Page({
       }
     })
   },
-  editOrder: function () {
-    wx.navigateTo({
-      url: '../order/editOrder/editOrder'
-    })
-  },
+
   //删除订单 弹出确认框后提交
   toast1Change: function (e) {
     this.setData({ toast1Hidden: true });
@@ -97,14 +99,20 @@ Page({
       modalHidden: false
     })
   },
-  confirm_one: function (e) {
-    console.log(e);
+  confirm_one: function (event) {
     // var formData = e.detail.value;
+    var orderId
+    orderId = wx.getStorageSync('ORDERID')
+    console.log('deleteId:' + orderId)
     wx.request({
       url: ORDER_DELETE,
+      header: {
+        'content-type': 'application/x-www-form-urlencoded '
+      },
       data: ({
-        orderId: 2,
+        orderId,
       }),
+      method: 'PUT',
       success: (res) => {
         console.log(res.data);
         this.setData({
@@ -112,6 +120,10 @@ Page({
           toast1Hidden: false,
           notice_str: '提交成功'
         });
+        wx.navigateTo({
+          url: '../order/order'
+        })
+
       },
       //没有正常弹出
       fail: function () {
@@ -144,9 +156,16 @@ Page({
       modalHidden2: true
     })
   },
-  deleteOrder: function (e) {
-    var that = this;
-    that.modalTap();
+  deleteOrder: function (event) {
+    let item = event.target.dataset.source;
+    wx.setStorageSync('ORDERID', item.orderId)
+    this.modalTap();
+  },
+  editOrder: function (event) {
+    let item = event.target.dataset.source;
+    wx.navigateTo({
+      url: '../order/editOrder/editOrder?id=' + item.orderId
+    })
   },
 
 })

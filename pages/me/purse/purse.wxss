@@ -1,5 +1,12 @@
+.top{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
 .pic {
-  width: 628rpx;
+  width: 528rpx;
   height: 428rpx;
   margin: 20rpx;
   border-radius: 100rpx;

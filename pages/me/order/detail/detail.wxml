@@ -1,13 +1,9 @@
 <view id="detail">
 
   <view class="top">
-    <view class="rig">
-    <image bindtap="note" class="spic" src="../../../images/note.jpg" background-size="cover"></image>
-    </view>
+
   <view class="addtext">订单详情</view>
-    <view class="lef">
-      <image bindtap="me" class="spic" src="../../../images/me.jpg" background-size="cover"></image>
-    </view>
+
   </view>
 
 <form bindsubmit='formSubmit' bindreset='formReset'>
@@ -15,49 +11,68 @@
   <view class="section">  
     <view class="section__title">区域:</view>  
     <view class='form-group'>  
-      <text class="input-text">{{parkArea}}</text>
+      <text class="input-text">{{order.parkArea}}</text>
     </view>    
   </view>  
 
   <view class="section">   
     <view class="section__title">楼号:</view>  
     <view class='form-group'>  
-      <text class="input-text">{{parkBuild}}</text> 
+      <text class="input-text">{{order.parkBuild}}</text> 
     </view> 
   </view>   
 
   <view class="section">    
     <view class="section__title">车位号:</view>  
     <view class='form-group'>  
-      <text class="input-text">{{parkNum}}</text>>  
+      <text class="input-text">{{order.parkNum}}</text>  
     </view> 
   </view>  
 
   <view class="section"> 
     <view class="section__title">租出时间:</view>  
-    <view class="picker">
-      <text class="input-text">{{orderDate}}</text>
+    <view class="form-group">
+      <text class="input-text">{{order.orderDate}}</text>
     </view>
   </view>
 
   <view class="section"> 
     <view class="section__title">租出费用:</view> 
     <view class="form-group">
-      <text class="input-text">{{price}} 元/天</text> 
+      <text class="input-text">{{order.price}} 元/天</text> 
     </view> 
   </view>
 
   <view class="section"> 
     <view class="section__title">订单状态:</view> 
     <view class="form-group">
-      <text class="input-text">{{orderStatus}}</text> 
+        <view wx:if="{{order.orderState == 1}}" class="orderText">发布中</view>
+        <view wx:elif="{{order.orderState == 2}}" class="orderText">已完成</view>
+        <view wx:elif="{{order.orderState == 3}}" class="orderText">已完成</view>
+        <view wx:elif="{{order.orderState === 0}}" class="orderText">已失效</view>
     </view> 
   </view>
-
-  <view class="btn-area">  
-    <button bindtap="edit" class="sub">编辑</button> 
-    <button bindtap="delete" class="res">删除</button> 
-  </view> 
+  <view wx:if="{{order.orderState == 1}}">
+    <view class="btn-area">  
+      <button bindtap="edit" class="sub">编辑</button> 
+      <button bindtap="delete" class="res">撤销</button> 
+    </view> 
+  </view>
 </form>
 
 </view>
+
+ <!-- 黑框提示并消失 -->  
+    <toast hidden="{{toast1Hidden}}" bindchange="toast1Change">  
+        {{notice_str}}  
+    </toast>  
+    <!-- 确认框 及 提示框 -->  
+    <view class="page__bd">  
+        <modal title="确认" confirm-text="确定" cancel-text="取消" hidden="{{modalHidden}}" mask bindconfirm="confirm_one" bindcancel="cancel_one">  
+            删除后将不能恢复，确认删除？  
+        </modal>  
+        <modal class="modal" hidden="{{modalHidden2}}" no-cancel bindconfirm="modalChange2" bindcancel="modalChange2">  
+            <view> 提示 </view>  
+            <view> 清空成功 </view>  
+        </modal>  
+    </view>  
