@@ -32,7 +32,7 @@
   <view class="section"> 
     <view class="section__title">租出时间</view>  
     <view class="picker">
-      <picker mode="date" value="{{dateValue}}" start="2018-04-04" end="2018-12-31" bindchange="datePickerBindchange" class="date" name="orderDate">
+      <picker mode="date" value="{{dateValue}}" start="{{dateValue}}" end="2018-12-31" bindchange="datePickerBindchange" class="date" name="orderDate">
     	{{dateValue}}
       </picker>
     </view>

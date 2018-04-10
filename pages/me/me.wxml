@@ -9,17 +9,17 @@
   </view>
 
   <view class="information" bindtap="infor">
-    <image class="sspic" src="../images/information.jpg"></image>
+   
     <text class="stext">\t我的资料</text>
   </view>
 
   <view class="purse" bindtap="pur">
-    <image class="sspic" src="../images/information.jpg"></image>
+   
     <text class="stext">\t我的钱包</text>
   </view>
 
   <view class="order" bindtap="ord">
-    <image class="sspic" src="../images/information.jpg"></image>
+   
     <text class="stext">\t我的订单</text>
   </view>
 </view>  

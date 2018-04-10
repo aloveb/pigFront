@@ -90,6 +90,8 @@
   height: 36rpx !important;
 }
 /*swtich样式end*/
+
+
 .btn-area{
     clear: both;  
     width:80%;  

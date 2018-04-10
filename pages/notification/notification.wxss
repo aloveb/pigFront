@@ -19,7 +19,7 @@
   border-radius: 20rpx;
 }
 .orderInfor{
-  width: 60%;
+  width: 80%;
 }
 
 .button1{
@@ -41,7 +41,7 @@ button::after{
   flex-direction: column;
   align-items: left;
   margin: 10rpx;
-  font-size: 30rpx;
+  font-size: 35rpx;
   font-weight: 400;
 }
 

@@ -29,8 +29,12 @@ Page({
   onShow: function () {
     // 调用函数时，传入new Date()参数，返回值是日期和时间 
     var dateValue 
-    dateValueC = util.formatTime(new Date());
-    dateValueC = dateValueC.substring(0,10)
+    var day1 = new Date();
+    day1.setDate(day1.getDate() + 1);
+    dateValueC = util.formatTime(day1);
+    console.log(dateValueC)
+    dateValueC = dateValueC.substring(0, 4) + '-' + dateValueC.substring(5, 7) + '-' + dateValueC.substring(8, 10)
+    console.log(dateValueC)
     var parkArea = wx.getStorageSync('PARKAREA')
     var parkBuild = wx.getStorageSync('PARKBUILD')
     var parkNum = wx.getStorageSync('PARKNUM')
@@ -45,6 +49,7 @@ Page({
   },  
 
   datePickerBindchange: function (e) {
+    console.log(e.detail.value)
     this.setData({
       dateValue: e.detail.value
     })

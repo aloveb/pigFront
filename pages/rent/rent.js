@@ -5,7 +5,7 @@ const CHECK_USER = getApp().globalData.CHECK_USER
 const RENT_GRAB = getApp().globalData.RENT_GRAB
 var item
 var id
-var orderNote
+var orderNote = true
 Page({
 
   /**
@@ -16,6 +16,7 @@ Page({
     toast1Hidden: true,
     modalHidden: true,
     modalHidden2: true,
+    orderNote: true,
     notice_str: '',
     item:[{ 
       orderId:'',

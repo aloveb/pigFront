@@ -19,14 +19,14 @@
 }
 
 .information{
-  padding:20rpx;
+  padding:20rpx 20rpx 20rpx 80rpx;
   background-color: white;
 }
 .purse{
-  padding:20rpx;
+  padding:20rpx 20rpx 20rpx 80rpx;
 }
 .order{
-  padding:20rpx;
+  padding:20rpx 20rpx 20rpx 80rpx;
   background-color: white;
 }
 .sspic{
