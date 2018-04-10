@@ -20,6 +20,33 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#339999",
     "navigationBarTitleText": "小猪配停",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "backgroundColorBottom":"#EEEEEE"
+  },
+  "tabBar": {
+    "color": "black",
+    "selectedColor": "#a9b7b7",
+    "borderStyle": "#F6F7F7",
+    "backgroundColor":"#EEEEEE",
+    "list": [
+      {
+        "selectedIconPath": "pages/images/111.png",
+        "iconPath": "pages/images/1.png",
+        "pagePath": "pages/home/home",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "pages/images/22.png",
+        "iconPath": "pages/images/2.png",
+        "pagePath": "pages/notification/notification",
+        "text": "消息"
+      },
+      {
+        "selectedIconPath": "pages/images/3333.png",
+        "iconPath": "pages/images/3.png",
+        "pagePath": "pages/me/me",
+        "text": "我的"
+      }
+    ]
   }
 }

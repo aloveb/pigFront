@@ -1,7 +1,7 @@
 .pic {
-  width: 788rpx;
+  width: 748rpx;
   height: 228rpx;
-  margin: 20rpx;
+  margin: 20rpx 20rpx 20rpx 20rpx;
   border-radius: 10rpx;
 }
 .spic {

@@ -103,6 +103,9 @@ Page({
                           console.log("haven't new note")
                         }else{
                           console.log("new note")
+                          wx.showTabBarRedDot({
+                            index:1
+                          })
                         }
                       }
                     })

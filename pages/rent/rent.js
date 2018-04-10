@@ -69,7 +69,7 @@ Page({
     })
     setTimeout(function () {
       wx.hideLoading()
-    }, 500)
+    }, 1000)
 
     //load页面
     var that = this;

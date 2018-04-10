@@ -1,6 +1,7 @@
 // pages/notification/notification.js
 const app = getApp()
 const ORDER_REQUEST = getApp().globalData.ORDER_REQUEST
+const NOTE_UPDATE = getApp().globalData.NOTE_UPDATE
 var idI = wx.getStorageSync('ID')
 var item
 Page({
@@ -33,6 +34,15 @@ Page({
     })
     console.log("orderIdRe" + idI)
     // var id=1
+    wx.request({
+      url: NOTE_UPDATE + idI,
+      success: function (res) {
+        wx.hideTabBarRedDot({
+          index:1
+        })
+      }
+    })
+
     wx.request({
       url: ORDER_REQUEST + idI,
       method: 'GET',
