@@ -31,21 +31,21 @@
 } 
 .sub{   
     float: left; 
-    width: 40%; 
+    width: 35%; 
     height: 100rpx;
-    margin: 15rpx;
+    margin: 325rpx 0rpx 0rpx 0rpx;
     color: black;
-    background-color: #0792B5;
-    border-radius: 40%;
+    background-color: #339999;
+    border-radius: 40rpx;
 } 
 .res{   
     float: right; 
-    width: 40%; 
+    width: 35%; 
     height: 100rpx;
-    margin: 15rpx;
+    margin: 325rpx 0rpx 0rpx 0rpx;
     color: black;
-    background-color: #0792B5;
-    border-radius: 40%;
+    background-color: #339999;
+    border-radius: 40rpx;
 } 
 .section{  
     clear: both;  

@@ -26,7 +26,8 @@ Page({
   },
   onShow: function () {
     let id = this.options.id;
-
+    chargeHidden1 = false
+    chargeHidden2 = true
     var that = this
     if (id) {
       wx.request({
@@ -47,7 +48,6 @@ Page({
            
           })
           console.log(orderD);
-
         }
       })
     }
@@ -130,7 +130,17 @@ Page({
     parkBuild = e.detail.value.parkBuild;
     parkNum = e.detail.value.parkNum;
     orderDate = e.detail.value.orderDate;
-    price = e.detail.value.price;
+    if (!chargeHidden2) {
+      console.log("Charge")
+      if (orderD.price == 0) {
+        price = e.detail.value.price;
+        console.log("change chager")
+      } else {
+        price = 0
+      }
+    } else {//此处逻辑待验证 
+      price = e.detail.value.price;
+    }
 
     var that = this;
     that.modalTap();

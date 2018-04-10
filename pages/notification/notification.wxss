@@ -1,4 +1,10 @@
 /* pages/notification/notification.wxss */
+.top{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:center;
+}
 .order{
   height: 100%;
   width: 90%;

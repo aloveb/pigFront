@@ -5,7 +5,7 @@
   justify-content:center;
 }
 
-.order{
+.order1{
   height: 100%;
   width: 90%;
   display: flex;
@@ -14,9 +14,22 @@
   justify-content: space-between;
   margin: 20rpx 40rpx 40rpx 40rpx;
   box-sizing: border-box;
-  background-color: #F7F6F6;
+  background-color: white;
   color: #7F6F6F;
-  border-radius: 20rpx;
+  border-radius: 10rpx;
+}
+.order2{
+  height: 100%;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20rpx 40rpx 40rpx 40rpx;
+  box-sizing: border-box;
+  color: #7F6F6F;
+  background-color: #F7F6F6;
+  border-radius: 10rpx;
 }
 .orderInfor{
   height: 100%;
@@ -27,7 +40,7 @@
   justify-content: space-between;
   margin: 20rpx 0rpx 0rpx 0rpx;
   box-sizing: border-box;
-  background-color: #F7F6F6;
+
   color: #7F6F6F;
 }
 
@@ -77,6 +90,7 @@ button::after{
   justify-content: space-between;
   padding: 1rpx 0;
   box-sizing: border-box;
+  color:gray;
 }
 
 .NoteText{

@@ -46,7 +46,7 @@ App({
     ORDER_REQUEST: 'https://rooti347933trial.hanatrial.ondemand.com/order/getOrderList?id=', //请求订单信息(通) 自己的
     PURSE_REQUEST: 'https://rooti347933trial.hanatrial.ondemand.com/user/purse?id=',  //钱包余额
   //  INFOR_REQUEST: 'https://rooti347933trial.hanatrial.ondemand.com/user/regist/',  //查看用户信息
-    NOTE_REQUEST: 'https://rooti347933trial.hanatrial.ondemand.com/user/note',  //notification信息请求
+    NOTE_UPDATE: 'https://rooti347933trial.hanatrial.ondemand.com/order/freeNotification?id=',  //notification信息请求
     ORDER: 'https://rooti347933trial.hanatrial.ondemand.com/order/', 
     PUB_POST: 'https://rooti347933trial.hanatrial.ondemand.com/order/add',  //新订单信息提交
     PUB_EDIT: 'https://rooti347933trial.hanatrial.ondemand.com/order/edit', 
@@ -55,6 +55,7 @@ App({
     RENT_GRAB: 'https://rooti347933trial.hanatrial.ondemand.com/order/grabOrder',
     ORDER_DELETE: 'https://rooti347933trial.hanatrial.ondemand.com/order/cancelOrder', 
     REGIST: 'https://rooti347933trial.hanatrial.ondemand.com/user/register',  //注册
+    CHECK_NOTE: 'https://rooti347933trial.hanatrial.ondemand.com/order/notification?id=',
 
   }
 })

@@ -3,6 +3,7 @@ const app = getApp()
 const ORDER_REQUEST = getApp().globalData.ORDER_REQUEST
 const ORDER_DELETE = getApp().globalData.ORDER_DELETE
 var idI = wx.getStorageSync('ID')
+var orderNote = true
 var item
 //var orderNote 
 
@@ -13,7 +14,7 @@ Page({
    */
   data: {
     
-   orderNote:true,
+   orderNote:true, 
    toast1Hidden: true,
    modalHidden: true,
    modalHidden2: true,
@@ -50,6 +51,7 @@ Page({
     })
     console.log("orderIdRe"+idI)
    // var id=1
+
     wx.request({
       url: ORDER_REQUEST+idI,
       method: 'GET',
@@ -60,7 +62,7 @@ Page({
           item[k].orderDate = item[k].orderDate.substring(0, 10)
         }
        // console.log("return order:"+res.data)
-        if (res.data===null){
+        if (item[0] == null){
           console.log("no data")
           that.setData({
             orderNote:false
@@ -69,24 +71,20 @@ Page({
         } else {
           that.setData({
             item:item,
-      /*
-          rentId: res.data.rentId,
-          tenamtId: res.data.tenamtId,
-          parkArea: res.data.parkArea,
-          parkBuild: res.data.parkBuild,
-          parkNum: res.data.parkNum,
-          releaseDate: res.data.item.releaseDate,
-          confirmDate: res.data.confirmDate,
-          orderDate: res.data.orderDate,
-          price: res.data.price,
-          orderType: res.data.orderType,
-          orderState: res.data.orderState,
-          oederId: res.data.oederId   */
+            orderNote:true
         })
         }
    
       }
     })
+
+    //加载提示框
+    wx.showLoading({
+      title: 'loading',
+    })
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 1000)
   },
 
   //删除订单 弹出确认框后提交

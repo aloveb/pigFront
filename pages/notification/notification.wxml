@@ -1,22 +1,19 @@
 <view class="top">
-  <view class="rig">
-  <image bindtap="note" class="spic" src="../images/note.jpg" background-size="cover"></image>
-  </view>
+
 <view class="addtext">notification</view>
-  <view class="lef">
-    <image bindtap="me" class="spic" src="../images/me.jpg" background-size="cover"></image>
-  </view>
+
 </view>
 
 <view>
   <form >
-  <view wx:for="{{item}}" class="order">
-    <view class="orderInfor">
-        <view class="orderText">您有新订单交易成功~</view>
+  <view wx:for="{{item}}" wx:key="orderId" class="order">
+   
+    <view wx:if="{{item.orderState == 2}}" class="orderInfor">
+        <view class="orderText">您有订单交易成功~</view>
         <view class="orderTextS">车位地址：{{item.parkArea}}-{{item.parkBuild}}-{{item.parkNum}}</view> 
-        <view class="orderTextS">交易时间：{{item.orderDate}}</view>
-        <view class="orderTextS">交易类型：{{item.orderType}}</view>
+        <view class="orderTextS">交易时间：{{item.confirmDate}}</view>
     </view>
+  
   </view>
   </form>
 </view>

@@ -5,6 +5,11 @@
  
 </view>
 
+<!--无历史订单-->
+<view class="Note" hidden="{{orderNote}}">
+  <text class="NoteText">订单都被抢光啦！</text>
+</view>
+
 <!--订单信息-->
 <view>
   <form >

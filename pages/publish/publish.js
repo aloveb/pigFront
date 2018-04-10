@@ -61,6 +61,13 @@ Page({
       }
     })
 
+  //加载提示框
+    wx.showLoading({
+      title: 'loading',
+    })
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 1000)
 
   //load页面
     var that = this;
@@ -80,10 +87,14 @@ Page({
         for (var k in item) {
           item[k].orderDate = item[k].orderDate.substring(0, 10)
         }
+
         //console.log("resDataItem:"+item[0].orderId)
         if (res.data) {
           console.log("have order")
           orderNote = true
+          wx.setStorageSync('PARKAREA', item[0].parkArea)
+          wx.setStorageSync('PARKBUILD', item[0].parkBuild)
+          wx.setStorageSync('PARKNUM', item[0].parkNum)
           that.setData({
             item: res.data,
             orderNote:orderNote,

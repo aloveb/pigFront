@@ -5,6 +5,7 @@ const CHECK_USER = getApp().globalData.CHECK_USER
 const RENT_GRAB = getApp().globalData.RENT_GRAB
 var item
 var id
+var orderNote
 Page({
 
   /**
@@ -61,9 +62,15 @@ Page({
       }
     })
 
+    //加载提示框
+    wx.showLoading({
+      title: 'loading',
+    })
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 500)
 
     //load页面
-
     var that = this;
     id = wx.getStorageSync('ID')
     console.log("rentId:"+id)
@@ -82,14 +89,22 @@ Page({
           item[k].orderDate = item[k].orderDate.substring(0, 10)
         }
         //console.log("resDataItem:"+item[0].orderId)
-        if (res.data) {
+        if (item[0] != null) {
+          console.log(item)
           console.log("have order")
-     
+          
           that.setData({
             item: res.data,
-            
+            orderNote:true
           })
+        }else{
+          that.setData({
+            orderNote: false,
+
+          })
+          console.log("noteRent:"+orderNote)
         }
+
 
       }
     })

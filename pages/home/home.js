@@ -3,7 +3,8 @@
 const app = getApp()
 const CHECK_USER = getApp().globalData.CHECK_USER
 const GET_OPENID = getApp().globalData.GET_OPENID
-
+const CHECK_NOTE = getApp().globalData.CHECK_NOTE
+const NOTE_UPDATE = getApp().globalData.NOTE_UPDATE
 const APP_ID = 'wxcc704198b07ae345';//输入小程序appid  
 const APP_SECRET = '623f8a05e0a330bb9f6dfc21f46943ad';//输入小程序app_secret  
 var openId;
@@ -82,7 +83,7 @@ Page({
                   console.log("check2:" + CHECK_USER + openId)
 
                   if (res.data.id == undefined) {
-                    //check为null时，直接跳转到页
+                    //check为null时，直接跳转
                     console.log("新用户") 
                       wx.setStorageSync('OPENID', openId)
                     console.log('OPENID:' + wx.getStorageSync('OPENID'))
@@ -91,9 +92,20 @@ Page({
                     })
                   }
                   else {
-                    //check为false时提示用户是否进行注册，跳转到注册页面
+                   
                     console.log("已注册 id:" + res.data.id)
-                  
+                    //  提示信息判断
+                    wx.request({
+                      url: CHECK_NOTE + res.data.id,
+                      success: (e) => {
+                        console.log(e.data)
+                        if(!e.data){
+                          console.log("haven't new note")
+                        }else{
+                          console.log("new note")
+                        }
+                      }
+                    })
                     try {
                       wx.setStorageSync('ID', res.data.id)
                       wx.setStorageSync('OPENID', res.data.openId)
@@ -121,6 +133,9 @@ Page({
       }
       //    },
     }) 
+
+
+
   },
 
   //事件处理函数
@@ -132,6 +147,9 @@ Page({
   note: function () {
     wx.navigateTo({
       url: '../notification/notification'
+    })
+    wx.request({
+      url: NOTE_UPDATE + wx.getStorageSync('ID'),
     })
   },
   bindViewTap1: function () {

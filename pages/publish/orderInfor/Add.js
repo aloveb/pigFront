@@ -4,9 +4,9 @@ const app = getApp();
 const PUB_POST = getApp().globalData.PUB_POST
 var rentId = wx.getStorageSync('ID')
 var tenatId
-var parkArea
-var parkBuild
-var parkNum
+var parkArea = wx.getStorageSync('PARKAREA')
+var parkBuild = wx.getStorageSync('PARKBUILD')
+var parkNum = wx.getStorageSync('PARKNUM')
 var price
 var orderDate
 var chargeHidden1=false
@@ -31,9 +31,16 @@ Page({
     var dateValue 
     dateValueC = util.formatTime(new Date());
     dateValueC = dateValueC.substring(0,10)
+    var parkArea = wx.getStorageSync('PARKAREA')
+    var parkBuild = wx.getStorageSync('PARKBUILD')
+    var parkNum = wx.getStorageSync('PARKNUM')
+
     // 再通过setData更改Page()里面的data，动态更新页面的数据  
     this.setData({
-      dateValue: dateValueC
+      dateValue: dateValueC,
+      parkArea: parkArea,
+      parkBuild: parkBuild,
+      parkNum: parkNum   
     });
   },  
 
@@ -77,10 +84,7 @@ Page({
       method: 'POST',
       success: (res) => {
         console.log(res.data);
-        wx.navigateTo({
-          url: '../../publish/publish',
-        })
-
+        wx.navigateBack()
       }
     })
     this.setData({
@@ -112,9 +116,15 @@ Page({
   },
   formSubmit: function (e) {
     console.log(e.detail.value);
-    parkArea = e.detail.value.parkArea;
+    if (e.detail.value.parkArea != 0){
+      parkArea = e.detail.value.parkArea;
+    }
+    if (e.detail.value.parkBuild != 0){
     parkBuild = e.detail.value.parkBuild;
+    }
+    if (e.detail.value.parkNum != 0){
     parkNum = e.detail.value.parkNum;
+    }
     orderDate = e.detail.value.orderDate;
     if(chargeHidden2){
       console.log("Charge")

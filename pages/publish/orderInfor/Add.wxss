@@ -30,25 +30,26 @@
 } 
 .sub{   
     float: left; 
-    width: 40%; 
+    width: 35%; 
     height: 100rpx;
-    margin: 15rpx;
     color: black;
-    background-color: #0792B5;
-    border-radius: 40%;
+    background-color: #339999;
+    margin: 175rpx 0rpx 0rpx 0rpx;
+    border-radius: 40rpx;
 } 
 .res{   
     float: right; 
-    width: 40%; 
-    height: 100rpx;
-    margin: 15rpx;
+    width: 35%; 
+    height: 100rpx; 
     color: black;
-    background-color: #0792B5;
-    border-radius: 40%;
+    background-color: #339999;
+    margin: 175rpx 0rpx 0rpx 0rpx;
+    border-radius: 40rpx;
 } 
 .section{  
     clear: both;  
-    width:70%;  
+    width:70%;
+    font-size: 45rpx;  
     margin: 2rem auto;  
 }  
 .picker{
@@ -59,10 +60,14 @@
 .input-text{  
     border: 1px solid #ddd;  
     background-color: white;
+    height:70rpx;
+    font-size: 45rpx;
 }  
 .input-text2{  
     border: 1px solid #ddd;
     background-color: white;
+    height:70rpx;
+    font-size: 45rpx;
  
 }  
 .date{

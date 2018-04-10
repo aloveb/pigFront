@@ -19,36 +19,44 @@
 
 .section__title{  
     float: left;  
-    width:30%;
+    font-size: 50rpx;
+    width:40%;
     margin: 15rpx 0rpx 15rpx 15rpx;  
 }  
 .form-group{  
     float: right;  
-    width: 60%; 
+    width: 50%; 
     margin: 15rpx 15rpx 15rpx 0rpx;
 }  
 .sub{   
     float: left; 
-    width: 40%; 
-    height: 100rpx;
-    margin: 15rpx;
-    background-color: #0792B5;
-    border-radius: 40%;
+    width: 35%; 
+    height: 90rpx;
+    margin: 525rpx 0rpx 0rpx 0rpx;
+    background-color: #339999;
+    border-radius: 40rpx;
 } 
 .res{   
     float: right; 
-    width: 40%; 
-    height: 100rpx;
-    margin: 15rpx;
-    background-color: #0792B5;
-    border-radius: 40%;
+    width: 35%; 
+    height: 90rpx;
+    margin: 525rpx 0rpx 0rpx 0rpx;
+    background-color: #339999;
+    border-radius: 40rpx;
 } 
 .section{  
     clear: both;  
-    width:90%;  
+    width:85%;  
     margin: 2rem auto;  
 }  
+.btn-area{  
+    clear: both;  
+    width:80%;  
+    margin: 2rem auto;  
+} 
 .input-text{  
+    height:70rpx;
+    font-size: 45rpx;
     border: 1px solid #ddd;  
 }  
 .Sinput-text{  

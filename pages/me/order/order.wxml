@@ -14,6 +14,7 @@
   <form >
   <view wx:for="{{item}}" wx:key="orderId" class="order">
 
+    <view wx:if="{{item.orderState == 1}}" class="order1">
     <view class="orderInfor" bindtap='detail'  data-index="{{item.orderId}}">
       
         <view wx:if="{{item.rentId == idI}}" class="orderText">
@@ -26,10 +27,28 @@
           <view class="midText">{{item.orderDate}}</view>
           <view wx:if="{{item.orderState == 1}}" class="midText">发布中</view>
           <view wx:elif="{{item.orderState == 2}}" class="midText">已完成</view>
-          <view wx:elif="{{item.orderState == 3}}" class="midText">已完成</view>
-          <view wx:elif="{{item.orderState == 0}}" class="midText">已失效</view>
+          <view wx:elif="{{item.orderState === 0}}" class="midText">已失效</view>
         </view>
     </view>
+    </view>
+
+    <view wx:else class="order2">
+    <view class="orderInfor" bindtap='detail'  data-index="{{item.orderId}}">
+      
+        <view wx:if="{{item.rentId == idI}}" class="orderText">
+        <image src='../../images/zu.jpg' class="orderPic">租主</image>
+        </view>
+        <view wx:elif="{{item.tenantId == idI}}" class="orderText">
+        <image src='../../images/ding.jpg' class="orderPic">租户</image>
+        </view>
+        <view class='mid'>
+          <view class="midText">{{item.orderDate}}</view>
+          <view wx:if="{{item.orderState == 1}}" class="midText">发布中</view>
+          <view wx:elif="{{item.orderState == 2}}" class="midText">已完成</view>
+          <view wx:elif="{{item.orderState === 0}}" class="midText">已失效</view>
+        </view>
+    </view>
+    </view>    
 
   </view>
   </form>

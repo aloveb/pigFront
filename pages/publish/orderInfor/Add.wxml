@@ -11,26 +11,26 @@
   <view class="section">  
     <view class="section__title">区域</view>  
     <view class='form-group'>  
-      <input type="text" class="input-text" name="parkArea" placeholder="A/B/C/D/E" />  
+      <input type="text" class="input-text" name="parkArea" placeholder="{{parkArea}}" />  
     </view>    
   </view>  
 
   <view class="section">   
     <view class="section__title">楼号</view>  
     <view class='form-group'>  
-      <input type="number" class="input-text" name="parkBuild" placeholder="number" />  
+      <input type="number" class="input-text" name="parkBuild" placeholder="{{parkBuild}}" />  
     </view> 
   </view>   
 
   <view class="section">    
     <view class="section__title">车位号</view>  
     <view class='form-group'>  
-      <input type="number" class="input-text" name="parkNum" placeholder="number" />  
+      <input type="number" class="input-text" name="parkNum" placeholder="{{parkNum}}" />  
     </view> 
   </view>  
 
   <view class="section"> 
-    <view class="section__title">租出时间段</view>  
+    <view class="section__title">租出时间</view>  
     <view class="picker">
       <picker mode="date" value="{{dateValue}}" start="2018-04-04" end="2018-12-31" bindchange="datePickerBindchange" class="date" name="orderDate">
     	{{dateValue}}
@@ -51,11 +51,11 @@
       <input type="number" class="input-text2" name="price" placeholder="5" >
       </input>
     </view>  
-    <text class='form-group'>元/天</text>
+    <text class='form-group'>币/天</text>
   </view>  
 
     <view class="section section_gap" hidden="{{chargeHidden2}}">   
-    <text class='form-group'> 0 元/天</text>
+    <text class='form-group'> 0 币/天</text>
     </view> 
 
   <view class="btn-area">  
